@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700..800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/site.css?v=9">
+  <link rel="stylesheet" href="/assets/site.css?v=10">
   <script>
     // .js: gentle motion (fades, the logo, the phone's screens). .motion: big motion too, unless the system asks for less.
     (function (d) {
@@ -31,7 +31,7 @@
       if (f !== 'off') d.classList.add('flow');
     })(document.documentElement);
   </script>
-  <script src="/assets/site.js?v=9" defer></script>
+  <script src="/assets/site.js?v=10" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -294,56 +294,57 @@
         <p class="kicker reveal">Works with</p>
         <h2 class="reveal">The banks and wallets you already use</h2>
         <p class="sub reveal">JAIB reads the payment alerts these send to your phone and Gmail. You don't connect an account
-          or share a password. In Gmail you can add any other sender too.</p>
+          or share a password. In Gmail you can add any other sender too. Tap a bank or wallet for its helpline, how to block
+          a card and where to report fraud.</p>
         <div class="names reveal">
           <h3>Banks</h3>
           <ul>
-            <li>HBL</li>
-            <li>Meezan</li>
-            <li>UBL</li>
-            <li>MCB</li>
-            <li>MCB Islamic</li>
-            <li>Allied Bank</li>
-            <li>Bank Alfalah</li>
-            <li>Faysal Bank</li>
-            <li>Bank AL Habib</li>
-            <li>Habib Metro</li>
-            <li>Askari</li>
-            <li>JS Bank</li>
-            <li>Standard Chartered</li>
-            <li>Bank of Punjab</li>
-            <li>NBP</li>
-            <li>Soneri Bank</li>
-            <li>BankIslami</li>
-            <li>Dubai Islamic Bank</li>
-            <li>Al Baraka</li>
-            <li>Sindh Bank</li>
-            <li>Mashreq</li>
-            <li>Raqami</li>
-            <li>Khushhali Bank</li>
-            <li>NRSP Bank</li>
+            <li><button type="button" class="help" data-help="HBL" aria-haspopup="dialog">HBL</button></li>
+            <li><button type="button" class="help" data-help="Meezan" aria-haspopup="dialog">Meezan</button></li>
+            <li><button type="button" class="help" data-help="UBL" aria-haspopup="dialog">UBL</button></li>
+            <li><button type="button" class="help" data-help="MCB" aria-haspopup="dialog">MCB</button></li>
+            <li><button type="button" class="help" data-help="MCB Islamic" aria-haspopup="dialog">MCB Islamic</button></li>
+            <li><button type="button" class="help" data-help="Allied Bank" aria-haspopup="dialog">Allied Bank</button></li>
+            <li><button type="button" class="help" data-help="Bank Alfalah" aria-haspopup="dialog">Bank Alfalah</button></li>
+            <li><button type="button" class="help" data-help="Faysal Bank" aria-haspopup="dialog">Faysal Bank</button></li>
+            <li><button type="button" class="help" data-help="Bank AL Habib" aria-haspopup="dialog">Bank AL Habib</button></li>
+            <li><button type="button" class="help" data-help="Habib Metro" aria-haspopup="dialog">Habib Metro</button></li>
+            <li><button type="button" class="help" data-help="Askari" aria-haspopup="dialog">Askari</button></li>
+            <li><button type="button" class="help" data-help="JS Bank" aria-haspopup="dialog">JS Bank</button></li>
+            <li><button type="button" class="help" data-help="Standard Chartered" aria-haspopup="dialog">Standard Chartered</button></li>
+            <li><button type="button" class="help" data-help="Bank of Punjab" aria-haspopup="dialog">Bank of Punjab</button></li>
+            <li><button type="button" class="help" data-help="NBP" aria-haspopup="dialog">NBP</button></li>
+            <li><button type="button" class="help" data-help="Soneri Bank" aria-haspopup="dialog">Soneri Bank</button></li>
+            <li><button type="button" class="help" data-help="BankIslami" aria-haspopup="dialog">BankIslami</button></li>
+            <li><button type="button" class="help" data-help="Dubai Islamic Bank" aria-haspopup="dialog">Dubai Islamic Bank</button></li>
+            <li><button type="button" class="help" data-help="Al Baraka" aria-haspopup="dialog">Al Baraka</button></li>
+            <li><button type="button" class="help" data-help="Sindh Bank" aria-haspopup="dialog">Sindh Bank</button></li>
+            <li><button type="button" class="help" data-help="Mashreq" aria-haspopup="dialog">Mashreq</button></li>
+            <li><button type="button" class="help" data-help="Raqami" aria-haspopup="dialog">Raqami</button></li>
+            <li><button type="button" class="help" data-help="Khushhali Bank" aria-haspopup="dialog">Khushhali Bank</button></li>
+            <li><button type="button" class="help" data-help="NRSP Bank" aria-haspopup="dialog">NRSP Bank</button></li>
             <li>Apna Bank</li>
-            <li>Bank Makramah</li>
-            <li>Bank of Khyber</li>
-            <li>Samba Bank</li>
-            <li>First Women Bank</li>
-            <li>ZTBL</li>
+            <li><button type="button" class="help" data-help="Bank Makramah" aria-haspopup="dialog">Bank Makramah</button></li>
+            <li><button type="button" class="help" data-help="Bank of Khyber" aria-haspopup="dialog">Bank of Khyber</button></li>
+            <li><button type="button" class="help" data-help="Samba Bank" aria-haspopup="dialog">Samba Bank</button></li>
+            <li><button type="button" class="help" data-help="First Women Bank" aria-haspopup="dialog">First Women Bank</button></li>
+            <li><button type="button" class="help" data-help="ZTBL" aria-haspopup="dialog">ZTBL</button></li>
           </ul>
           <h3>Wallets and digital banks</h3>
           <ul>
-            <li>Easypaisa</li>
-            <li>JazzCash</li>
-            <li>UPaisa</li>
-            <li>NayaPay</li>
-            <li>SadaPay</li>
-            <li>Zindigi</li>
-            <li>ABHI Bank (SimSim)</li>
-            <li>YAP</li>
-            <li>FirstPay</li>
-            <li>Keenu</li>
-            <li>Digitt+</li>
-            <li>OPay</li>
-            <li>OneZapp</li>
+            <li><button type="button" class="help" data-help="Easypaisa" aria-haspopup="dialog">Easypaisa</button></li>
+            <li><button type="button" class="help" data-help="JazzCash" aria-haspopup="dialog">JazzCash</button></li>
+            <li><button type="button" class="help" data-help="UPaisa" aria-haspopup="dialog">UPaisa</button></li>
+            <li><button type="button" class="help" data-help="NayaPay" aria-haspopup="dialog">NayaPay</button></li>
+            <li><button type="button" class="help" data-help="SadaPay" aria-haspopup="dialog">SadaPay</button></li>
+            <li><button type="button" class="help" data-help="Zindigi" aria-haspopup="dialog">Zindigi</button></li>
+            <li><button type="button" class="help" data-help="SimSim" aria-haspopup="dialog">ABHI Bank (SimSim)</button></li>
+            <li><button type="button" class="help" data-help="YAP" aria-haspopup="dialog">YAP</button></li>
+            <li><button type="button" class="help" data-help="FirstPay" aria-haspopup="dialog">FirstPay</button></li>
+            <li><button type="button" class="help" data-help="Keenu" aria-haspopup="dialog">Keenu</button></li>
+            <li><button type="button" class="help" data-help="Digitt+" aria-haspopup="dialog">Digitt+</button></li>
+            <li><button type="button" class="help" data-help="OPay" aria-haspopup="dialog">OPay</button></li>
+            <li><button type="button" class="help" data-help="OneZapp" aria-haspopup="dialog">OneZapp</button></li>
           </ul>
           <h3>Payments, shops and rides</h3>
           <ul>
@@ -368,7 +369,16 @@
         <p class="note reveal">Names belong to their owners and are shown only to say whose alerts JAIB can read. JAIB is not
           connected to or endorsed by any of them.</p>
       </div>
-    </section>
+        <dialog id="help" class="help-dialog" aria-labelledby="help-title">
+          <form method="dialog" class="help-close"><button type="submit" aria-label="Close">×</button></form>
+          <h3 id="help-title"></h3>
+          <p class="help-safe"><b>JAIB is not this bank or wallet and is not connected to it.</b> No bank will ever ask for your
+            PIN, password or one-time code. If a number here differs from the bank's own website or the back of your card,
+            trust the bank.</p>
+          <div class="help-body"></div>
+          <p class="help-src"></p>
+        </dialog>
+      </section>
     <section id="privacy" class="ink">
       <div class="wrap promise">
         <div>

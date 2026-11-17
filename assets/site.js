@@ -1,6 +1,66 @@
 // JAIB site: scroll reveal, the header on scroll, and the pocket logo animation as the app plays it
 // (ui/designsystem/.../LogoAnimation.kt: the opening tile, 256 units across, at twice the drawing's speed).
-// No tracking, no network calls.
+// No tracking; the only fetch is the bank help file from this site.
+// Bank help: a name in "Works with" opens its helpline, card blocking and fraud lines. The data is the app's own
+// (assets/bank-help.json, from the app's bank-help.json), fetched from this site only when a name is first tapped.
+(function () {
+  var dlg = document.getElementById('help');
+  var list = document.querySelector('.works .names');
+  if (!dlg || !list || typeof dlg.showModal !== 'function') return;
+  var LABELS = { helpline: 'Helpline', abroad: 'From abroad', block: 'Block a card', fraud: 'Report fraud',
+    whatsapp: 'WhatsApp', complaints: 'Complaints', website: 'Official website' };
+  var ORDER = ['block', 'fraud', 'helpline', 'whatsapp', 'abroad', 'complaints', 'website'];
+  var data = null, opener = null;
+  function el(tag, text) { var e = document.createElement(tag); if (text) e.textContent = text; return e; }
+  function render(key) {
+    var bank = null;
+    data.banks.forEach(function (b) { if (b.names.indexOf(key) >= 0) bank = b; });
+    if (!bank) return false;
+    dlg.querySelector('#help-title').textContent = bank.name;
+    var body = dlg.querySelector('.help-body'); body.textContent = '';
+    ORDER.forEach(function (kind) {
+      var lines = bank.lines.filter(function (l) { return l.kind === kind; });
+      if (!lines.length) return;
+      body.appendChild(el('h4', LABELS[kind] || kind));
+      var ul = el('ul');
+      lines.forEach(function (l) {
+        var li = el('li'), v;
+        if (/^(tel:|mailto:|https:)/.test(l.href)) {
+          v = el('a', l.value); v.href = l.href;
+          if (l.href.indexOf('https:') === 0) { v.target = '_blank'; v.rel = 'noopener noreferrer'; }
+        } else {
+          v = el('span', l.value); v.className = 'val';
+        }
+        li.appendChild(v);
+        if (l.detail) li.appendChild(el('small', l.detail));
+        ul.appendChild(li);
+      });
+      body.appendChild(ul);
+    });
+    dlg.querySelector('.help-src').textContent = 'Taken from the bank\u2019s own website, app listing or documents, and checked on ' +
+      data.checked + '. Numbers can change: if in doubt, use the bank\u2019s website. In the JAIB app, open the bank or wallet in Accounts for the same help.';
+    return true;
+  }
+  function open(key) {
+    if (render(key)) { dlg.showModal(); dlg.scrollTop = 0; }
+  }
+  list.addEventListener('click', function (e) {
+    var b = e.target.closest('.help'); if (!b) return;
+    opener = b;
+    var key = b.getAttribute('data-help');
+    if (data) { open(key); return; }
+    fetch('/assets/bank-help.json?v=1').then(function (r) { return r.json(); })
+      .then(function (d) { data = d; open(key); })
+      .catch(function () { /* offline: the name stays a name */ });
+  });
+  dlg.addEventListener('click', function (e) {   // a tap on the backdrop (outside the box) closes it
+    if (e.target !== dlg) return;
+    var r = dlg.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
+  });
+  dlg.addEventListener('close', function () { if (opener) opener.focus(); });
+})();
+
 // Themes, light or dark, and moving pictures: the visitor's choices, kept in this browser only (the head script applies
 // them before the page draws). Theme names and colours are the app's (ui/designsystem/theme/Themes.kt).
 (function () {
