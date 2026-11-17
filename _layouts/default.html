@@ -13,14 +13,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700..800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/site.css?v=8">
+  <link rel="stylesheet" href="/assets/site.css?v=9">
   <script>
     (function (d) {
       d.classList.add('js');
       if (!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) d.classList.add('motion');
+      // the visitor's own choices, kept in this browser only: theme, light or dark, moving pictures
+      var t = null, m = null, f = null;
+      try { t = localStorage.getItem('jaib-theme'); m = localStorage.getItem('jaib-mode'); f = localStorage.getItem('jaib-flow'); } catch (e) {}
+      if (t && /^[a-z]+$/.test(t) && t !== 'josh') d.setAttribute('data-theme', t);
+      if (m === 'light' || m === 'dark') d.setAttribute('data-mode', m);
+      if (f !== 'off') d.classList.add('flow');
     })(document.documentElement);
   </script>
-  <script src="/assets/site.js?v=8" defer></script>
+  <script src="/assets/site.js?v=9" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -49,6 +55,7 @@
       <a href="/privacy/">Privacy policy</a>
       <a href="/updates/">Updates</a>
       <a href="/blog/">Blog</a>
+      <a href="/#themes">Themes</a>
       <a href="mailto:hello@jaib.pk">hello@jaib.pk</a>
       <a href="https://play.google.com/store/apps/details?id=pk.packistan.jaib" rel="noopener" target="_blank">Google Play (closed beta)</a>
       <span>Made in Pakistan</span>

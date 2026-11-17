@@ -16,6 +16,8 @@
   --band-ink: #ffffff;
   --band-dot: #ff4d5e;
   --phone: #ffffff;
+  --tile: #ffffff;
+  --mark: #c8102e;
   --bg: #ffffff;
   --surface: #f8f3f4;
   --text: #1d1719;
@@ -40,7 +42,7 @@
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-mode="light"]) {
     --brand: #ff4d5e;
     --brand-ink: #1d0a0e;
     --top: #5c0715;
@@ -76,6 +78,41 @@
     color-scheme: dark;
   }
 }
+:root[data-mode="dark"] {
+  --brand: #ff4d5e;
+  --brand-ink: #1d0a0e;
+  --top: #5c0715;
+  --hero: #8f0b21;
+  --hero-ink: #ffffff;
+  --hero-soft: #ffdfe3;
+  --hero-em: #ffc2ca;
+  --hero-btn-ink: #8f0b21;
+  --ray: rgba(255, 255, 255, 0.05);
+  --band: #f2ecee;
+  --band-ink: #1d1719;
+  --band-dot: #c8102e;
+  --phone: #1a1416;
+  --bg: #141012;
+  --surface: #1d1719;
+  --text: #f2ecee;
+  --muted: #a99da0;
+  --divider: #2f2729;
+  --tint: #3a1a20;
+  --green: #5fd29a;
+  --amber: #f0a64a;
+  --ink-bg: #251d20;
+  --ink-text: #f2ecee;
+  --ink-muted: #b3a7aa;
+  --ink-brand: #ff4d5e;
+  --ink-line: #3a2f33;
+  --card: #141012;
+  --pop: #3a3034;
+  --inverse: #f2ecee;
+  --inverse-ink: #1d1719;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+  --phone-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  color-scheme: dark;
+}
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 72px; }
@@ -105,13 +142,13 @@ h3 { text-wrap: balance; }
   position: sticky; top: 0; z-index: 20;
   background: var(--top);
   color: var(--hero-ink);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.14);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--hero-ink) 14%, transparent);
   transition: box-shadow 0.3s ease;
 }
-.top.scrolled { box-shadow: 0 1px 0 rgba(255, 255, 255, 0.14), 0 10px 30px rgba(40, 0, 8, 0.3); }
+.top.scrolled { box-shadow: 0 1px 0 color-mix(in srgb, var(--hero-ink) 14%, transparent), 0 10px 30px rgba(40, 0, 8, 0.3); }
 .top .wrap { display: flex; align-items: center; gap: 24px; height: 64px; }
 .mark { display: flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; font-weight: 800; font-size: 20px; letter-spacing: 0.02em; }
-.mark img { width: 34px; height: 34px; border-radius: 9px; box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.35); }
+.mark img { width: 34px; height: 34px; border-radius: 9px; box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--hero-ink) 35%, transparent); }
 .top nav { margin-left: auto; display: flex; gap: 22px; }
 .top nav a { color: var(--hero-soft); text-decoration: none; font-weight: 600; font-size: 15px; padding: 4px 0; background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat; transition: background-size 0.25s ease, color 0.2s ease; }
 .top nav a:hover { color: var(--hero-ink); background-size: 100% 2px; }
@@ -139,7 +176,7 @@ h3 { text-wrap: balance; }
 }
 .hero::before { background-image: repeating-conic-gradient(from 0deg at 59% 50%, var(--ray) 0deg 6deg, transparent 6deg 15deg); }
 .hero > .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; align-items: center; padding-bottom: 124px; }
-.badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: rgba(255, 255, 255, 0.16); color: var(--hero-ink); font-weight: 700; font-size: 14px; }
+.badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: color-mix(in srgb, var(--hero-ink) 16%, transparent); color: var(--hero-ink); font-weight: 700; font-size: 14px; }
 .badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--hero-ink); }
 .motion .badge::before { animation: blink 2.4s ease-in-out infinite; }
 @keyframes blink { 50% { opacity: 0.35; transform: scale(0.8); } }
@@ -151,10 +188,10 @@ h1 em { font-style: normal; color: var(--hero-em); }
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: 16px; transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.2s ease; }
 .btn:hover { transform: translateY(-2px); }
 .btn:active { transform: scale(0.97); }
-.btn.light { background: #ffffff; color: var(--hero-btn-ink); }
+.btn.light { background: var(--hero-ink); color: var(--hero-btn-ink); }
 .btn.light:hover { box-shadow: 0 10px 24px rgba(40, 0, 8, 0.3); }
-.btn.outline { color: var(--hero-ink); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.6); }
-.btn.outline:hover { background: rgba(255, 255, 255, 0.12); }
+.btn.outline { color: var(--hero-ink); box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--hero-ink) 60%, transparent); }
+.btn.outline:hover { background: color-mix(in srgb, var(--hero-ink) 12%, transparent); }
 
 /* the stage is as tall as its phone (540 x 1200 screen, 9px frame, a little room for the tilt) */
 .hero-stage { --pw: 262px; position: relative; height: calc(var(--pw) * 2.2222 + 46px); }
@@ -162,13 +199,13 @@ h1 em { font-style: normal; color: var(--hero-em); }
 /* the app's opening tile: the pocket on a white tile, the coin swooping in */
 .tile {
   position: absolute; left: 2%; top: 31%; width: clamp(104px, 27%, 176px); aspect-ratio: 1;
-  border-radius: 25%; background: #ffffff; overflow: hidden;
+  border-radius: 25%; background: var(--tile); overflow: hidden;
   box-shadow: 0 22px 50px rgba(40, 0, 8, 0.35);
   transform: rotate(-8deg);
 }
 .pocket { display: block; width: 100%; height: 100%; }
-.pocket-line { fill: none; stroke: #c8102e; stroke-width: 20; stroke-linecap: round; stroke-linejoin: round; }
-.pocket-coin { fill: #c8102e; }
+.pocket-line { fill: none; stroke: var(--mark); stroke-width: 20; stroke-linecap: round; stroke-linejoin: round; }
+.pocket-coin { fill: var(--mark); }
 
 /* the phone: its screens take turns, an alert drops in, and a note says where the payment went */
 .hero-phone { position: absolute; right: 4%; top: 18px; width: var(--pw); transform: rotate(4deg); }
@@ -227,8 +264,8 @@ h1 em { font-style: normal; color: var(--hero-em); }
   font-weight: 700; font-size: 17px; padding: 14px 0;
 }
 .ticker-run { display: inline-flex; }
-.motion .ticker-run { animation: tick 40s linear infinite; }
-.motion .ticker:hover .ticker-run { animation-play-state: paused; }
+.flow .ticker-run { animation: tick 40s linear infinite; }
+.flow .ticker:hover .ticker-run { animation-play-state: paused; }
 .ticker span { display: inline-flex; align-items: center; }
 .ticker span::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--band-dot); margin: 0 26px; }
 @keyframes tick { to { transform: translateX(-50%); } }
@@ -300,7 +337,7 @@ h2 { font-size: clamp(32px, 4.6vw, 52px); line-height: 1.04; letter-spacing: -0.
 .inside { background: var(--surface); padding-bottom: 72px; overflow: hidden; overflow: clip; }
 .inside .sub { margin-bottom: 20px; }
 /* sideways only: a strip that could also scroll up and down would catch the page's wheel and touch scrolling */
-.strip { overflow-x: auto; overflow-y: hidden; overscroll-behavior-y: auto; scroll-snap-type: x proximity; scrollbar-width: thin; padding: 0 16px; touch-action: pan-x pan-y; }
+.strip { overflow-x: auto; overflow-y: hidden; overscroll-behavior-y: auto; scroll-snap-type: x proximity; scrollbar-width: none; padding: 0 16px; touch-action: pan-x pan-y; }
 .strip-run { display: flex; width: max-content; padding: 40px 0 24px; }
 .shot { margin: 0 34px 0 0; width: 220px; flex: none; scroll-snap-align: center; }
 .shot[aria-hidden="true"] { display: none; }
@@ -310,10 +347,11 @@ h2 { font-size: clamp(32px, 4.6vw, 52px); line-height: 1.04; letter-spacing: -0.
 .shot:hover .phone { transform: translateY(-14px) scale(1.03); box-shadow: 0 34px 70px rgba(70, 0, 12, 0.32); }
 .shot figcaption { margin-top: 20px; color: var(--muted); font-size: 14.5px; line-height: 1.45; text-align: center; }
 .shot figcaption b { display: block; color: var(--text); font-size: 17px; }
-.motion .strip { overflow: visible; scroll-snap-type: none; padding: 0; }
-.motion .shot[aria-hidden="true"] { display: block; }
-.motion .strip-run { animation: marquee 80s linear infinite; }
-.motion .strip:hover .strip-run, .motion .strip:focus-within .strip-run { animation-play-state: paused; }
+.strip::-webkit-scrollbar { display: none; }
+.flow .strip { overflow: visible; scroll-snap-type: none; padding: 0; }
+.flow .shot[aria-hidden="true"] { display: block; }
+.flow .strip-run { animation: marquee 80s linear infinite; }
+.flow .strip:hover .strip-run, .flow .strip:focus-within .strip-run { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 @media (max-width: 560px) { .shot { width: 180px; margin-right: 26px; } }
 
@@ -576,3 +614,1011 @@ footer .legal { flex-basis: 100%; }
 .post .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 28px 0; }
 .post .cards img { width: 100%; height: auto; border-radius: 16px; display: block; }
 .post-more { margin-top: 40px; font-weight: 700; }
+
+/* the app's colour themes (ui/designsystem/theme/Themes.kt), made by a script; Josh is the CSS above */
+:root[data-theme="sukoon"] {
+  --brand: #c8102e;
+  --brand-ink: #ffffff;
+  --hero: #1b1d21;
+  --hero-ink: #ffffff;
+  --hero-btn-ink: #1b1d21;
+  --top: color-mix(in srgb, #1b1d21 80%, #000);
+  --hero-soft: color-mix(in srgb, #ffffff 88%, #1b1d21);
+  --hero-em: color-mix(in srgb, #ffffff 72%, #c8102e);
+  --ray: color-mix(in srgb, #ffffff 7%, transparent);
+  --band: #17181b;
+  --band-ink: #ffffff;
+  --band-dot: #ff5a6a;
+  --phone: #ffffff;
+  --tile: #ffffff;
+  --mark: #1b1d21;
+  --bg: #ffffff;
+  --surface: #f3f4f6;
+  --text: #17181b;
+  --muted: #5f636b;
+  --divider: #e5e6ea;
+  --tint: #fce8eb;
+  --green: #0e7a55;
+  --amber: #9a5c00;
+  --ink-bg: #0e0f11;
+  --ink-text: #f2f3f5;
+  --ink-muted: #a0a4ac;
+  --ink-brand: #ff5a6a;
+  --ink-line: #2c2f35;
+  --card: #ffffff;
+  --pop: #ffffff;
+  --inverse: #17181b;
+  --inverse-ink: #ffffff;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #1b1d21 40%, rgba(0,0,0,0.35));
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="sukoon"]:not([data-mode="light"]) {
+    --brand: #ff5a6a;
+    --brand-ink: #0e0f11;
+    --hero: #1f2227;
+    --hero-ink: #ffffff;
+    --hero-btn-ink: #1f2227;
+    --top: color-mix(in srgb, #1f2227 80%, #000);
+    --hero-soft: color-mix(in srgb, #ffffff 88%, #1f2227);
+    --hero-em: color-mix(in srgb, #ffffff 72%, #ff5a6a);
+    --ray: color-mix(in srgb, #ffffff 5%, transparent);
+    --band: #f2f3f5;
+    --band-ink: #0e0f11;
+    --band-dot: #c8102e;
+    --phone: #1a1c20;
+    --tile: #ffffff;
+    --mark: #1f2227;
+    --bg: #0e0f11;
+    --surface: #1a1c20;
+    --text: #f2f3f5;
+    --muted: #a0a4ac;
+    --divider: #2c2f35;
+    --tint: #3a1a20;
+    --green: #3ccb8e;
+    --amber: #f0a63a;
+    --ink-bg: #23262b;
+    --ink-text: #f2f3f5;
+    --ink-muted: #a0a4ac;
+    --ink-brand: #ff5a6a;
+    --ink-line: #2c2f35;
+    --card: #0e0f11;
+    --pop: #23262b;
+    --inverse: #f2f3f5;
+    --inverse-ink: #0e0f11;
+    --phone-shadow: 0 24px 60px color-mix(in srgb, #1f2227 40%, rgba(0,0,0,0.35));
+    color-scheme: dark;
+  }
+}
+:root[data-theme="sukoon"][data-mode="dark"] {
+  --brand: #ff5a6a;
+  --brand-ink: #0e0f11;
+  --hero: #1f2227;
+  --hero-ink: #ffffff;
+  --hero-btn-ink: #1f2227;
+  --top: color-mix(in srgb, #1f2227 80%, #000);
+  --hero-soft: color-mix(in srgb, #ffffff 88%, #1f2227);
+  --hero-em: color-mix(in srgb, #ffffff 72%, #ff5a6a);
+  --ray: color-mix(in srgb, #ffffff 5%, transparent);
+  --band: #f2f3f5;
+  --band-ink: #0e0f11;
+  --band-dot: #c8102e;
+  --phone: #1a1c20;
+  --tile: #ffffff;
+  --mark: #1f2227;
+  --bg: #0e0f11;
+  --surface: #1a1c20;
+  --text: #f2f3f5;
+  --muted: #a0a4ac;
+  --divider: #2c2f35;
+  --tint: #3a1a20;
+  --green: #3ccb8e;
+  --amber: #f0a63a;
+  --ink-bg: #23262b;
+  --ink-text: #f2f3f5;
+  --ink-muted: #a0a4ac;
+  --ink-brand: #ff5a6a;
+  --ink-line: #2c2f35;
+  --card: #0e0f11;
+  --pop: #23262b;
+  --inverse: #f2f3f5;
+  --inverse-ink: #0e0f11;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #1f2227 40%, rgba(0,0,0,0.35));
+  color-scheme: dark;
+}
+:root[data-theme="apnaiyat"] {
+  --brand: #c4382b;
+  --brand-ink: #ffffff;
+  --hero: #0e1b2a;
+  --hero-ink: #ffffff;
+  --hero-btn-ink: #0e1b2a;
+  --top: color-mix(in srgb, #0e1b2a 80%, #000);
+  --hero-soft: color-mix(in srgb, #ffffff 88%, #0e1b2a);
+  --hero-em: color-mix(in srgb, #ffffff 72%, #c4382b);
+  --ray: color-mix(in srgb, #ffffff 7%, transparent);
+  --band: #0e1b2a;
+  --band-ink: #f8f9fb;
+  --band-dot: #ff6f61;
+  --phone: #ffffff;
+  --tile: #ffffff;
+  --mark: #0e1b2a;
+  --bg: #f8f9fb;
+  --surface: #eceff4;
+  --text: #0e1b2a;
+  --muted: #56616f;
+  --divider: #dfe4eb;
+  --tint: #fbe7e4;
+  --green: #0f7a56;
+  --amber: #985a00;
+  --ink-bg: #08131e;
+  --ink-text: #eef2f6;
+  --ink-muted: #9eabb9;
+  --ink-brand: #ff6f61;
+  --ink-line: #22374b;
+  --card: #ffffff;
+  --pop: #ffffff;
+  --inverse: #0e1b2a;
+  --inverse-ink: #f8f9fb;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #0e1b2a 40%, rgba(0,0,0,0.35));
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="apnaiyat"]:not([data-mode="light"]) {
+    --brand: #ff6f61;
+    --brand-ink: #08131e;
+    --hero: #132a40;
+    --hero-ink: #ffffff;
+    --hero-btn-ink: #132a40;
+    --top: color-mix(in srgb, #132a40 80%, #000);
+    --hero-soft: color-mix(in srgb, #ffffff 88%, #132a40);
+    --hero-em: color-mix(in srgb, #ffffff 72%, #ff6f61);
+    --ray: color-mix(in srgb, #ffffff 5%, transparent);
+    --band: #eef2f6;
+    --band-ink: #08131e;
+    --band-dot: #c4382b;
+    --phone: #112131;
+    --tile: #ffffff;
+    --mark: #132a40;
+    --bg: #08131e;
+    --surface: #112131;
+    --text: #eef2f6;
+    --muted: #9eabb9;
+    --divider: #22374b;
+    --tint: #3a1d1c;
+    --green: #43c99a;
+    --amber: #f2a93b;
+    --ink-bg: #182b3d;
+    --ink-text: #eef2f6;
+    --ink-muted: #9eabb9;
+    --ink-brand: #ff6f61;
+    --ink-line: #22374b;
+    --card: #08131e;
+    --pop: #182b3d;
+    --inverse: #eef2f6;
+    --inverse-ink: #08131e;
+    --phone-shadow: 0 24px 60px color-mix(in srgb, #132a40 40%, rgba(0,0,0,0.35));
+    color-scheme: dark;
+  }
+}
+:root[data-theme="apnaiyat"][data-mode="dark"] {
+  --brand: #ff6f61;
+  --brand-ink: #08131e;
+  --hero: #132a40;
+  --hero-ink: #ffffff;
+  --hero-btn-ink: #132a40;
+  --top: color-mix(in srgb, #132a40 80%, #000);
+  --hero-soft: color-mix(in srgb, #ffffff 88%, #132a40);
+  --hero-em: color-mix(in srgb, #ffffff 72%, #ff6f61);
+  --ray: color-mix(in srgb, #ffffff 5%, transparent);
+  --band: #eef2f6;
+  --band-ink: #08131e;
+  --band-dot: #c4382b;
+  --phone: #112131;
+  --tile: #ffffff;
+  --mark: #132a40;
+  --bg: #08131e;
+  --surface: #112131;
+  --text: #eef2f6;
+  --muted: #9eabb9;
+  --divider: #22374b;
+  --tint: #3a1d1c;
+  --green: #43c99a;
+  --amber: #f2a93b;
+  --ink-bg: #182b3d;
+  --ink-text: #eef2f6;
+  --ink-muted: #9eabb9;
+  --ink-brand: #ff6f61;
+  --ink-line: #22374b;
+  --card: #08131e;
+  --pop: #182b3d;
+  --inverse: #eef2f6;
+  --inverse-ink: #08131e;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #132a40 40%, rgba(0,0,0,0.35));
+  color-scheme: dark;
+}
+:root[data-theme="taazgi"] {
+  --brand: #1f5c10;
+  --brand-ink: #ffffff;
+  --hero: #a6e67a;
+  --hero-ink: #13200c;
+  --hero-btn-ink: #a6e67a;
+  --top: color-mix(in srgb, #a6e67a 80%, #000);
+  --hero-soft: color-mix(in srgb, #13200c 88%, #a6e67a);
+  --hero-em: color-mix(in srgb, #13200c 72%, #1f5c10);
+  --ray: color-mix(in srgb, #13200c 7%, transparent);
+  --band: #13200c;
+  --band-ink: #fffbf5;
+  --band-dot: #a6e67a;
+  --phone: #ffffff;
+  --tile: #13200c;
+  --mark: #a6e67a;
+  --bg: #fffbf5;
+  --surface: #f2eee4;
+  --text: #13200c;
+  --muted: #585f50;
+  --divider: #e4decf;
+  --tint: #e5f5d6;
+  --green: #1d6b33;
+  --amber: #8f5300;
+  --ink-bg: #0d1509;
+  --ink-text: #eef5e8;
+  --ink-muted: #a6b399;
+  --ink-brand: #a6e67a;
+  --ink-line: #2a3a22;
+  --card: #ffffff;
+  --pop: #ffffff;
+  --inverse: #13200c;
+  --inverse-ink: #fffbf5;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #a6e67a 40%, rgba(0,0,0,0.35));
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="taazgi"]:not([data-mode="light"]) {
+    --brand: #a6e67a;
+    --brand-ink: #13200c;
+    --hero: #1f3a12;
+    --hero-ink: #e9f9dc;
+    --hero-btn-ink: #1f3a12;
+    --top: color-mix(in srgb, #1f3a12 80%, #000);
+    --hero-soft: color-mix(in srgb, #e9f9dc 88%, #1f3a12);
+    --hero-em: color-mix(in srgb, #e9f9dc 72%, #a6e67a);
+    --ray: color-mix(in srgb, #e9f9dc 5%, transparent);
+    --band: #eef5e8;
+    --band-ink: #0d1509;
+    --band-dot: #1f5c10;
+    --phone: #172312;
+    --tile: #e9f9dc;
+    --mark: #1f3a12;
+    --bg: #0d1509;
+    --surface: #172312;
+    --text: #eef5e8;
+    --muted: #a6b399;
+    --divider: #2a3a22;
+    --tint: #24371a;
+    --green: #8fdda6;
+    --amber: #f0a63a;
+    --ink-bg: #1f2e18;
+    --ink-text: #eef5e8;
+    --ink-muted: #a6b399;
+    --ink-brand: #a6e67a;
+    --ink-line: #2a3a22;
+    --card: #0d1509;
+    --pop: #1f2e18;
+    --inverse: #eef5e8;
+    --inverse-ink: #0d1509;
+    --phone-shadow: 0 24px 60px color-mix(in srgb, #1f3a12 40%, rgba(0,0,0,0.35));
+    color-scheme: dark;
+  }
+}
+:root[data-theme="taazgi"][data-mode="dark"] {
+  --brand: #a6e67a;
+  --brand-ink: #13200c;
+  --hero: #1f3a12;
+  --hero-ink: #e9f9dc;
+  --hero-btn-ink: #1f3a12;
+  --top: color-mix(in srgb, #1f3a12 80%, #000);
+  --hero-soft: color-mix(in srgb, #e9f9dc 88%, #1f3a12);
+  --hero-em: color-mix(in srgb, #e9f9dc 72%, #a6e67a);
+  --ray: color-mix(in srgb, #e9f9dc 5%, transparent);
+  --band: #eef5e8;
+  --band-ink: #0d1509;
+  --band-dot: #1f5c10;
+  --phone: #172312;
+  --tile: #e9f9dc;
+  --mark: #1f3a12;
+  --bg: #0d1509;
+  --surface: #172312;
+  --text: #eef5e8;
+  --muted: #a6b399;
+  --divider: #2a3a22;
+  --tint: #24371a;
+  --green: #8fdda6;
+  --amber: #f0a63a;
+  --ink-bg: #1f2e18;
+  --ink-text: #eef5e8;
+  --ink-muted: #a6b399;
+  --ink-brand: #a6e67a;
+  --ink-line: #2a3a22;
+  --card: #0d1509;
+  --pop: #1f2e18;
+  --inverse: #eef5e8;
+  --inverse-ink: #0d1509;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #1f3a12 40%, rgba(0,0,0,0.35));
+  color-scheme: dark;
+}
+:root[data-theme="khamoshi"] {
+  --brand: #2563d9;
+  --brand-ink: #ffffff;
+  --hero: #0b1426;
+  --hero-ink: #ffffff;
+  --hero-btn-ink: #0b1426;
+  --top: color-mix(in srgb, #0b1426 80%, #000);
+  --hero-soft: color-mix(in srgb, #ffffff 88%, #0b1426);
+  --hero-em: color-mix(in srgb, #ffffff 72%, #2563d9);
+  --ray: color-mix(in srgb, #ffffff 7%, transparent);
+  --band: #0b1220;
+  --band-ink: #f6f8fc;
+  --band-dot: #6b97ff;
+  --phone: #ffffff;
+  --tile: #ffffff;
+  --mark: #0b1426;
+  --bg: #f6f8fc;
+  --surface: #eaeef5;
+  --text: #0b1220;
+  --muted: #555e70;
+  --divider: #dce2ec;
+  --tint: #e3ebfc;
+  --green: #08744a;
+  --amber: #935700;
+  --ink-bg: #050b16;
+  --ink-text: #e8edf6;
+  --ink-muted: #98a3b8;
+  --ink-brand: #6b97ff;
+  --ink-line: #1e2a40;
+  --card: #ffffff;
+  --pop: #ffffff;
+  --inverse: #0b1220;
+  --inverse-ink: #f6f8fc;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #0b1426 40%, rgba(0,0,0,0.35));
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="khamoshi"]:not([data-mode="light"]) {
+    --brand: #6b97ff;
+    --brand-ink: #050b16;
+    --hero: #0f1c33;
+    --hero-ink: #ffffff;
+    --hero-btn-ink: #0f1c33;
+    --top: color-mix(in srgb, #0f1c33 80%, #000);
+    --hero-soft: color-mix(in srgb, #ffffff 88%, #0f1c33);
+    --hero-em: color-mix(in srgb, #ffffff 72%, #6b97ff);
+    --ray: color-mix(in srgb, #ffffff 5%, transparent);
+    --band: #e8edf6;
+    --band-ink: #050b16;
+    --band-dot: #2563d9;
+    --phone: #0e1626;
+    --tile: #ffffff;
+    --mark: #0f1c33;
+    --bg: #050b16;
+    --surface: #0e1626;
+    --text: #e8edf6;
+    --muted: #98a3b8;
+    --divider: #1e2a40;
+    --tint: #16264a;
+    --green: #3ddc97;
+    --amber: #ffc857;
+    --ink-bg: #152036;
+    --ink-text: #e8edf6;
+    --ink-muted: #98a3b8;
+    --ink-brand: #6b97ff;
+    --ink-line: #1e2a40;
+    --card: #050b16;
+    --pop: #152036;
+    --inverse: #e8edf6;
+    --inverse-ink: #050b16;
+    --phone-shadow: 0 24px 60px color-mix(in srgb, #0f1c33 40%, rgba(0,0,0,0.35));
+    color-scheme: dark;
+  }
+}
+:root[data-theme="khamoshi"][data-mode="dark"] {
+  --brand: #6b97ff;
+  --brand-ink: #050b16;
+  --hero: #0f1c33;
+  --hero-ink: #ffffff;
+  --hero-btn-ink: #0f1c33;
+  --top: color-mix(in srgb, #0f1c33 80%, #000);
+  --hero-soft: color-mix(in srgb, #ffffff 88%, #0f1c33);
+  --hero-em: color-mix(in srgb, #ffffff 72%, #6b97ff);
+  --ray: color-mix(in srgb, #ffffff 5%, transparent);
+  --band: #e8edf6;
+  --band-ink: #050b16;
+  --band-dot: #2563d9;
+  --phone: #0e1626;
+  --tile: #ffffff;
+  --mark: #0f1c33;
+  --bg: #050b16;
+  --surface: #0e1626;
+  --text: #e8edf6;
+  --muted: #98a3b8;
+  --divider: #1e2a40;
+  --tint: #16264a;
+  --green: #3ddc97;
+  --amber: #ffc857;
+  --ink-bg: #152036;
+  --ink-text: #e8edf6;
+  --ink-muted: #98a3b8;
+  --ink-brand: #6b97ff;
+  --ink-line: #1e2a40;
+  --card: #050b16;
+  --pop: #152036;
+  --inverse: #e8edf6;
+  --inverse-ink: #050b16;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #0f1c33 40%, rgba(0,0,0,0.35));
+  color-scheme: dark;
+}
+:root[data-theme="itminan"] {
+  --brand: #0a6e65;
+  --brand-ink: #ffffff;
+  --hero: #0a6e65;
+  --hero-ink: #ffffff;
+  --hero-btn-ink: #0a6e65;
+  --top: color-mix(in srgb, #0a6e65 80%, #000);
+  --hero-soft: color-mix(in srgb, #ffffff 88%, #0a6e65);
+  --hero-em: color-mix(in srgb, #ffffff 72%, #dcefec);
+  --ray: color-mix(in srgb, #ffffff 7%, transparent);
+  --band: #10201f;
+  --band-ink: #ffffff;
+  --band-dot: #3cc2b2;
+  --phone: #ffffff;
+  --tile: #ffffff;
+  --mark: #0a6e65;
+  --bg: #ffffff;
+  --surface: #eef5f4;
+  --text: #10201f;
+  --muted: #536361;
+  --divider: #dae6e4;
+  --tint: #dcefec;
+  --green: #17723a;
+  --amber: #985a00;
+  --ink-bg: #08110f;
+  --ink-text: #e7f2f0;
+  --ink-muted: #99afab;
+  --ink-brand: #3cc2b2;
+  --ink-line: #1f3632;
+  --card: #ffffff;
+  --pop: #ffffff;
+  --inverse: #10201f;
+  --inverse-ink: #ffffff;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #0a6e65 40%, rgba(0,0,0,0.35));
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="itminan"]:not([data-mode="light"]) {
+    --brand: #3cc2b2;
+    --brand-ink: #08110f;
+    --hero: #0d3a35;
+    --hero-ink: #ffffff;
+    --hero-btn-ink: #0d3a35;
+    --top: color-mix(in srgb, #0d3a35 80%, #000);
+    --hero-soft: color-mix(in srgb, #ffffff 88%, #0d3a35);
+    --hero-em: color-mix(in srgb, #ffffff 72%, #3cc2b2);
+    --ray: color-mix(in srgb, #ffffff 5%, transparent);
+    --band: #e7f2f0;
+    --band-ink: #08110f;
+    --band-dot: #0a6e65;
+    --phone: #10201d;
+    --tile: #ffffff;
+    --mark: #0d3a35;
+    --bg: #08110f;
+    --surface: #10201d;
+    --text: #e7f2f0;
+    --muted: #99afab;
+    --divider: #1f3632;
+    --tint: #123430;
+    --green: #6bd69a;
+    --amber: #f0a63a;
+    --ink-bg: #172c28;
+    --ink-text: #e7f2f0;
+    --ink-muted: #99afab;
+    --ink-brand: #3cc2b2;
+    --ink-line: #1f3632;
+    --card: #08110f;
+    --pop: #172c28;
+    --inverse: #e7f2f0;
+    --inverse-ink: #08110f;
+    --phone-shadow: 0 24px 60px color-mix(in srgb, #0d3a35 40%, rgba(0,0,0,0.35));
+    color-scheme: dark;
+  }
+}
+:root[data-theme="itminan"][data-mode="dark"] {
+  --brand: #3cc2b2;
+  --brand-ink: #08110f;
+  --hero: #0d3a35;
+  --hero-ink: #ffffff;
+  --hero-btn-ink: #0d3a35;
+  --top: color-mix(in srgb, #0d3a35 80%, #000);
+  --hero-soft: color-mix(in srgb, #ffffff 88%, #0d3a35);
+  --hero-em: color-mix(in srgb, #ffffff 72%, #3cc2b2);
+  --ray: color-mix(in srgb, #ffffff 5%, transparent);
+  --band: #e7f2f0;
+  --band-ink: #08110f;
+  --band-dot: #0a6e65;
+  --phone: #10201d;
+  --tile: #ffffff;
+  --mark: #0d3a35;
+  --bg: #08110f;
+  --surface: #10201d;
+  --text: #e7f2f0;
+  --muted: #99afab;
+  --divider: #1f3632;
+  --tint: #123430;
+  --green: #6bd69a;
+  --amber: #f0a63a;
+  --ink-bg: #172c28;
+  --ink-text: #e7f2f0;
+  --ink-muted: #99afab;
+  --ink-brand: #3cc2b2;
+  --ink-line: #1f3632;
+  --card: #08110f;
+  --pop: #172c28;
+  --inverse: #e7f2f0;
+  --inverse-ink: #08110f;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #0d3a35 40%, rgba(0,0,0,0.35));
+  color-scheme: dark;
+}
+:root[data-theme="khwab"] {
+  --brand: #4347c9;
+  --brand-ink: #ffffff;
+  --hero: #4347c9;
+  --hero-ink: #ffffff;
+  --hero-btn-ink: #4347c9;
+  --top: color-mix(in srgb, #4347c9 80%, #000);
+  --hero-soft: color-mix(in srgb, #ffffff 88%, #4347c9);
+  --hero-em: color-mix(in srgb, #ffffff 72%, #e7e7fa);
+  --ray: color-mix(in srgb, #ffffff 7%, transparent);
+  --band: #15162b;
+  --band-ink: #ffffff;
+  --band-dot: #9295ff;
+  --phone: #ffffff;
+  --tile: #ffffff;
+  --mark: #4347c9;
+  --bg: #ffffff;
+  --surface: #f2f2fb;
+  --text: #15162b;
+  --muted: #5a5c75;
+  --divider: #e1e1ef;
+  --tint: #e7e7fa;
+  --green: #0b7d52;
+  --amber: #955700;
+  --ink-bg: #0d0e1c;
+  --ink-text: #ececfa;
+  --ink-muted: #a5a7c4;
+  --ink-brand: #9295ff;
+  --ink-line: #2a2c4a;
+  --card: #ffffff;
+  --pop: #ffffff;
+  --inverse: #15162b;
+  --inverse-ink: #ffffff;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #4347c9 40%, rgba(0,0,0,0.35));
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="khwab"]:not([data-mode="light"]) {
+    --brand: #9295ff;
+    --brand-ink: #0d0e1c;
+    --hero: #2a2c7a;
+    --hero-ink: #ffffff;
+    --hero-btn-ink: #2a2c7a;
+    --top: color-mix(in srgb, #2a2c7a 80%, #000);
+    --hero-soft: color-mix(in srgb, #ffffff 88%, #2a2c7a);
+    --hero-em: color-mix(in srgb, #ffffff 72%, #9295ff);
+    --ray: color-mix(in srgb, #ffffff 5%, transparent);
+    --band: #ececfa;
+    --band-ink: #0d0e1c;
+    --band-dot: #4347c9;
+    --phone: #171832;
+    --tile: #ffffff;
+    --mark: #2a2c7a;
+    --bg: #0d0e1c;
+    --surface: #171832;
+    --text: #ececfa;
+    --muted: #a5a7c4;
+    --divider: #2a2c4a;
+    --tint: #24265a;
+    --green: #4cd69a;
+    --amber: #f2ae45;
+    --ink-bg: #20223f;
+    --ink-text: #ececfa;
+    --ink-muted: #a5a7c4;
+    --ink-brand: #9295ff;
+    --ink-line: #2a2c4a;
+    --card: #0d0e1c;
+    --pop: #20223f;
+    --inverse: #ececfa;
+    --inverse-ink: #0d0e1c;
+    --phone-shadow: 0 24px 60px color-mix(in srgb, #2a2c7a 40%, rgba(0,0,0,0.35));
+    color-scheme: dark;
+  }
+}
+:root[data-theme="khwab"][data-mode="dark"] {
+  --brand: #9295ff;
+  --brand-ink: #0d0e1c;
+  --hero: #2a2c7a;
+  --hero-ink: #ffffff;
+  --hero-btn-ink: #2a2c7a;
+  --top: color-mix(in srgb, #2a2c7a 80%, #000);
+  --hero-soft: color-mix(in srgb, #ffffff 88%, #2a2c7a);
+  --hero-em: color-mix(in srgb, #ffffff 72%, #9295ff);
+  --ray: color-mix(in srgb, #ffffff 5%, transparent);
+  --band: #ececfa;
+  --band-ink: #0d0e1c;
+  --band-dot: #4347c9;
+  --phone: #171832;
+  --tile: #ffffff;
+  --mark: #2a2c7a;
+  --bg: #0d0e1c;
+  --surface: #171832;
+  --text: #ececfa;
+  --muted: #a5a7c4;
+  --divider: #2a2c4a;
+  --tint: #24265a;
+  --green: #4cd69a;
+  --amber: #f2ae45;
+  --ink-bg: #20223f;
+  --ink-text: #ececfa;
+  --ink-muted: #a5a7c4;
+  --ink-brand: #9295ff;
+  --ink-line: #2a2c4a;
+  --card: #0d0e1c;
+  --pop: #20223f;
+  --inverse: #ececfa;
+  --inverse-ink: #0d0e1c;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #2a2c7a 40%, rgba(0,0,0,0.35));
+  color-scheme: dark;
+}
+:root[data-theme="umang"] {
+  --brand: #b0480c;
+  --brand-ink: #ffffff;
+  --hero: #a8430b;
+  --hero-ink: #ffffff;
+  --hero-btn-ink: #a8430b;
+  --top: color-mix(in srgb, #a8430b 80%, #000);
+  --hero-soft: color-mix(in srgb, #ffffff 88%, #a8430b);
+  --hero-em: color-mix(in srgb, #ffffff 72%, #b0480c);
+  --ray: color-mix(in srgb, #ffffff 7%, transparent);
+  --band: #24170d;
+  --band-ink: #fffcf8;
+  --band-dot: #ff8a3d;
+  --phone: #ffffff;
+  --tile: #ffffff;
+  --mark: #a8430b;
+  --bg: #fffcf8;
+  --surface: #faf0e6;
+  --text: #24170d;
+  --muted: #66584c;
+  --divider: #eee2d4;
+  --tint: #fbe5d4;
+  --green: #1a6f3e;
+  --amber: #7a5600;
+  --ink-bg: #140d08;
+  --ink-text: #f8eee6;
+  --ink-muted: #baa898;
+  --ink-brand: #ff8a3d;
+  --ink-line: #3a2a1e;
+  --card: #ffffff;
+  --pop: #ffffff;
+  --inverse: #24170d;
+  --inverse-ink: #fffcf8;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #a8430b 40%, rgba(0,0,0,0.35));
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="umang"]:not([data-mode="light"]) {
+    --brand: #ff8a3d;
+    --brand-ink: #140d08;
+    --hero: #5a2a0e;
+    --hero-ink: #ffffff;
+    --hero-btn-ink: #5a2a0e;
+    --top: color-mix(in srgb, #5a2a0e 80%, #000);
+    --hero-soft: color-mix(in srgb, #ffffff 88%, #5a2a0e);
+    --hero-em: color-mix(in srgb, #ffffff 72%, #ff8a3d);
+    --ray: color-mix(in srgb, #ffffff 5%, transparent);
+    --band: #f8eee6;
+    --band-ink: #140d08;
+    --band-dot: #b0480c;
+    --phone: #21160f;
+    --tile: #ffffff;
+    --mark: #5a2a0e;
+    --bg: #140d08;
+    --surface: #21160f;
+    --text: #f8eee6;
+    --muted: #baa898;
+    --divider: #3a2a1e;
+    --tint: #3a2414;
+    --green: #57d08e;
+    --amber: #f5c451;
+    --ink-bg: #2b1e15;
+    --ink-text: #f8eee6;
+    --ink-muted: #baa898;
+    --ink-brand: #ff8a3d;
+    --ink-line: #3a2a1e;
+    --card: #140d08;
+    --pop: #2b1e15;
+    --inverse: #f8eee6;
+    --inverse-ink: #140d08;
+    --phone-shadow: 0 24px 60px color-mix(in srgb, #5a2a0e 40%, rgba(0,0,0,0.35));
+    color-scheme: dark;
+  }
+}
+:root[data-theme="umang"][data-mode="dark"] {
+  --brand: #ff8a3d;
+  --brand-ink: #140d08;
+  --hero: #5a2a0e;
+  --hero-ink: #ffffff;
+  --hero-btn-ink: #5a2a0e;
+  --top: color-mix(in srgb, #5a2a0e 80%, #000);
+  --hero-soft: color-mix(in srgb, #ffffff 88%, #5a2a0e);
+  --hero-em: color-mix(in srgb, #ffffff 72%, #ff8a3d);
+  --ray: color-mix(in srgb, #ffffff 5%, transparent);
+  --band: #f8eee6;
+  --band-ink: #140d08;
+  --band-dot: #b0480c;
+  --phone: #21160f;
+  --tile: #ffffff;
+  --mark: #5a2a0e;
+  --bg: #140d08;
+  --surface: #21160f;
+  --text: #f8eee6;
+  --muted: #baa898;
+  --divider: #3a2a1e;
+  --tint: #3a2414;
+  --green: #57d08e;
+  --amber: #f5c451;
+  --ink-bg: #2b1e15;
+  --ink-text: #f8eee6;
+  --ink-muted: #baa898;
+  --ink-brand: #ff8a3d;
+  --ink-line: #3a2a1e;
+  --card: #140d08;
+  --pop: #2b1e15;
+  --inverse: #f8eee6;
+  --inverse-ink: #140d08;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #5a2a0e 40%, rgba(0,0,0,0.35));
+  color-scheme: dark;
+}
+:root[data-theme="fakhr"] {
+  --brand: #01411c;
+  --brand-ink: #ffffff;
+  --hero: #01411c;
+  --hero-ink: #ffffff;
+  --hero-btn-ink: #01411c;
+  --top: color-mix(in srgb, #01411c 80%, #000);
+  --hero-soft: color-mix(in srgb, #ffffff 88%, #01411c);
+  --hero-em: color-mix(in srgb, #ffffff 72%, #e0eee5);
+  --ray: color-mix(in srgb, #ffffff 7%, transparent);
+  --band: #0f1e16;
+  --band-ink: #ffffff;
+  --band-dot: #5cc98a;
+  --phone: #ffffff;
+  --tile: #ffffff;
+  --mark: #01411c;
+  --bg: #ffffff;
+  --surface: #eff5f1;
+  --text: #0f1e16;
+  --muted: #53635a;
+  --divider: #dce6df;
+  --tint: #e0eee5;
+  --green: #17723d;
+  --amber: #985a00;
+  --ink-bg: #07120c;
+  --ink-text: #eaf3ee;
+  --ink-muted: #9db2a6;
+  --ink-brand: #5cc98a;
+  --ink-line: #1e3428;
+  --card: #ffffff;
+  --pop: #ffffff;
+  --inverse: #0f1e16;
+  --inverse-ink: #ffffff;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #01411c 40%, rgba(0,0,0,0.35));
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="fakhr"]:not([data-mode="light"]) {
+    --brand: #5cc98a;
+    --brand-ink: #07120c;
+    --hero: #0b3a20;
+    --hero-ink: #ffffff;
+    --hero-btn-ink: #0b3a20;
+    --top: color-mix(in srgb, #0b3a20 80%, #000);
+    --hero-soft: color-mix(in srgb, #ffffff 88%, #0b3a20);
+    --hero-em: color-mix(in srgb, #ffffff 72%, #5cc98a);
+    --ray: color-mix(in srgb, #ffffff 5%, transparent);
+    --band: #eaf3ee;
+    --band-ink: #07120c;
+    --band-dot: #01411c;
+    --phone: #0f1f16;
+    --tile: #ffffff;
+    --mark: #0b3a20;
+    --bg: #07120c;
+    --surface: #0f1f16;
+    --text: #eaf3ee;
+    --muted: #9db2a6;
+    --divider: #1e3428;
+    --tint: #143322;
+    --green: #7ae0a5;
+    --amber: #f0a63a;
+    --ink-bg: #162a1e;
+    --ink-text: #eaf3ee;
+    --ink-muted: #9db2a6;
+    --ink-brand: #5cc98a;
+    --ink-line: #1e3428;
+    --card: #07120c;
+    --pop: #162a1e;
+    --inverse: #eaf3ee;
+    --inverse-ink: #07120c;
+    --phone-shadow: 0 24px 60px color-mix(in srgb, #0b3a20 40%, rgba(0,0,0,0.35));
+    color-scheme: dark;
+  }
+}
+:root[data-theme="fakhr"][data-mode="dark"] {
+  --brand: #5cc98a;
+  --brand-ink: #07120c;
+  --hero: #0b3a20;
+  --hero-ink: #ffffff;
+  --hero-btn-ink: #0b3a20;
+  --top: color-mix(in srgb, #0b3a20 80%, #000);
+  --hero-soft: color-mix(in srgb, #ffffff 88%, #0b3a20);
+  --hero-em: color-mix(in srgb, #ffffff 72%, #5cc98a);
+  --ray: color-mix(in srgb, #ffffff 5%, transparent);
+  --band: #eaf3ee;
+  --band-ink: #07120c;
+  --band-dot: #01411c;
+  --phone: #0f1f16;
+  --tile: #ffffff;
+  --mark: #0b3a20;
+  --bg: #07120c;
+  --surface: #0f1f16;
+  --text: #eaf3ee;
+  --muted: #9db2a6;
+  --divider: #1e3428;
+  --tint: #143322;
+  --green: #7ae0a5;
+  --amber: #f0a63a;
+  --ink-bg: #162a1e;
+  --ink-text: #eaf3ee;
+  --ink-muted: #9db2a6;
+  --ink-brand: #5cc98a;
+  --ink-line: #1e3428;
+  --card: #07120c;
+  --pop: #162a1e;
+  --inverse: #eaf3ee;
+  --inverse-ink: #07120c;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #0b3a20 40%, rgba(0,0,0,0.35));
+  color-scheme: dark;
+}
+:root[data-theme="wazahat"] {
+  --brand: #000000;
+  --brand-ink: #ffffff;
+  --hero: #000000;
+  --hero-ink: #ffffff;
+  --hero-btn-ink: #000000;
+  --top: color-mix(in srgb, #000000 80%, #000);
+  --hero-soft: color-mix(in srgb, #ffffff 88%, #000000);
+  --hero-em: color-mix(in srgb, #ffffff 72%, #e8e8e8);
+  --ray: color-mix(in srgb, #ffffff 7%, transparent);
+  --band: #000000;
+  --band-ink: #ffffff;
+  --band-dot: #ffffff;
+  --phone: #ffffff;
+  --tile: #ffffff;
+  --mark: #000000;
+  --bg: #ffffff;
+  --surface: #f1f1f1;
+  --text: #000000;
+  --muted: #474747;
+  --divider: #d4d4d4;
+  --tint: #e8e8e8;
+  --green: #006b2e;
+  --amber: #7f4600;
+  --ink-bg: #000000;
+  --ink-text: #ffffff;
+  --ink-muted: #c2c2c2;
+  --ink-brand: #ffffff;
+  --ink-line: #2e2e2e;
+  --card: #ffffff;
+  --pop: #ffffff;
+  --inverse: #000000;
+  --inverse-ink: #ffffff;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #000000 40%, rgba(0,0,0,0.35));
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="wazahat"]:not([data-mode="light"]) {
+    --brand: #ffffff;
+    --brand-ink: #000000;
+    --hero: #141414;
+    --hero-ink: #ffffff;
+    --hero-btn-ink: #141414;
+    --top: color-mix(in srgb, #141414 80%, #000);
+    --hero-soft: color-mix(in srgb, #ffffff 88%, #141414);
+    --hero-em: color-mix(in srgb, #ffffff 72%, #ffffff);
+    --ray: color-mix(in srgb, #ffffff 5%, transparent);
+    --band: #ffffff;
+    --band-ink: #000000;
+    --band-dot: #000000;
+    --phone: #141414;
+    --tile: #ffffff;
+    --mark: #141414;
+    --bg: #000000;
+    --surface: #141414;
+    --text: #ffffff;
+    --muted: #c2c2c2;
+    --divider: #2e2e2e;
+    --tint: #262626;
+    --green: #5be38f;
+    --amber: #ffc233;
+    --ink-bg: #1e1e1e;
+    --ink-text: #ffffff;
+    --ink-muted: #c2c2c2;
+    --ink-brand: #ffffff;
+    --ink-line: #2e2e2e;
+    --card: #000000;
+    --pop: #1e1e1e;
+    --inverse: #ffffff;
+    --inverse-ink: #000000;
+    --phone-shadow: 0 24px 60px color-mix(in srgb, #141414 40%, rgba(0,0,0,0.35));
+    color-scheme: dark;
+  }
+}
+:root[data-theme="wazahat"][data-mode="dark"] {
+  --brand: #ffffff;
+  --brand-ink: #000000;
+  --hero: #141414;
+  --hero-ink: #ffffff;
+  --hero-btn-ink: #141414;
+  --top: color-mix(in srgb, #141414 80%, #000);
+  --hero-soft: color-mix(in srgb, #ffffff 88%, #141414);
+  --hero-em: color-mix(in srgb, #ffffff 72%, #ffffff);
+  --ray: color-mix(in srgb, #ffffff 5%, transparent);
+  --band: #ffffff;
+  --band-ink: #000000;
+  --band-dot: #000000;
+  --phone: #141414;
+  --tile: #ffffff;
+  --mark: #141414;
+  --bg: #000000;
+  --surface: #141414;
+  --text: #ffffff;
+  --muted: #c2c2c2;
+  --divider: #2e2e2e;
+  --tint: #262626;
+  --green: #5be38f;
+  --amber: #ffc233;
+  --ink-bg: #1e1e1e;
+  --ink-text: #ffffff;
+  --ink-muted: #c2c2c2;
+  --ink-brand: #ffffff;
+  --ink-line: #2e2e2e;
+  --card: #000000;
+  --pop: #1e1e1e;
+  --inverse: #ffffff;
+  --inverse-ink: #000000;
+  --phone-shadow: 0 24px 60px color-mix(in srgb, #141414 40%, rgba(0,0,0,0.35));
+  color-scheme: dark;
+}
+
+/* make it yours: the app's themes, light or dark, and moving pictures */
+.themes { background: var(--surface); }
+.theme-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+.theme-grid button { display: flex; align-items: center; gap: 12px; text-align: left; padding: 12px 14px; border-radius: 18px; border: 2px solid var(--divider); background: var(--card); color: var(--text); font: inherit; cursor: pointer; transition: border-color 0.2s ease, transform 0.2s ease; }
+.theme-grid button:hover { transform: translateY(-2px); }
+.theme-grid button[aria-checked="true"] { border-color: var(--brand); }
+.theme-grid .sw { flex: none; width: 40px; height: 40px; border-radius: 50%; background: conic-gradient(var(--a) 0 50%, var(--b) 0 75%, var(--c) 0); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08); }
+.theme-grid b { display: block; font-size: 16px; line-height: 1.2; }
+.theme-grid small { display: block; color: var(--muted); font-size: 13px; line-height: 1.3; }
+.mode-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 24px; }
+.seg { display: inline-flex; padding: 4px; border-radius: 999px; background: var(--card); border: 1px solid var(--divider); }
+.seg button, .flow-toggle { font: inherit; font-weight: 700; font-size: 15px; border: 0; border-radius: 999px; padding: 8px 16px; background: transparent; color: var(--muted); cursor: pointer; }
+.seg button[aria-checked="true"] { background: var(--brand); color: var(--brand-ink); }
+.flow-toggle { border: 1px solid var(--divider); background: var(--card); color: var(--text); }
+.themes .note { color: var(--muted); font-size: 14px; margin: 18px 0 0; }

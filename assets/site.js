@@ -1,6 +1,72 @@
 // JAIB site: scroll reveal, the header on scroll, and the pocket logo animation as the app plays it
 // (ui/designsystem/.../LogoAnimation.kt: the opening tile, 256 units across, at twice the drawing's speed).
 // No tracking, no network calls.
+// Themes, light or dark, and moving pictures: the visitor's choices, kept in this browser only (the head script applies
+// them before the page draws). Theme names and colours are the app's (ui/designsystem/theme/Themes.kt).
+(function () {
+  var root = document.documentElement;
+  function save(k, v) { try { if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} }
+  // <picture> sources follow the system's light or dark, so a chosen mode rewrites their media
+  var sources = [].slice.call(document.querySelectorAll('source[media*="prefers-color-scheme"]'));
+  sources.forEach(function (s) { s.dataset.media = s.getAttribute('media'); });
+  var metas = [].slice.call(document.querySelectorAll('meta[name="theme-color"]'));
+  metas.forEach(function (m) { m.dataset.content = m.getAttribute('content'); });
+  function paintBars() {
+    var bar = document.querySelector('.top');
+    var custom = root.hasAttribute('data-theme') || root.hasAttribute('data-mode');
+    var c = bar ? getComputedStyle(bar).backgroundColor : null;
+    metas.forEach(function (m) { m.setAttribute('content', custom && c ? c : m.dataset.content); });
+  }
+  function applyMode(mode) {
+    if (mode === 'light' || mode === 'dark') root.setAttribute('data-mode', mode); else root.removeAttribute('data-mode');
+    sources.forEach(function (s) {
+      s.setAttribute('media', mode === 'dark' ? 'all' : mode === 'light' ? 'not all' : s.dataset.media);
+    });
+  }
+  function applyTheme(id) {
+    if (id && id !== 'josh') root.setAttribute('data-theme', id); else root.removeAttribute('data-theme');
+  }
+  applyMode(root.getAttribute('data-mode') || 'system');
+  paintBars();
+
+  function check(group, attr, value) {
+    [].forEach.call(group.querySelectorAll('[' + attr + ']'), function (b) {
+      b.setAttribute('aria-checked', b.getAttribute(attr) === value ? 'true' : 'false');
+    });
+  }
+  var grid = document.querySelector('.theme-grid');
+  if (grid) {
+    check(grid, 'data-theme-id', root.getAttribute('data-theme') || 'josh');
+    grid.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-theme-id]'); if (!b) return;
+      var id = b.getAttribute('data-theme-id');
+      applyTheme(id); save('jaib-theme', id === 'josh' ? null : id); check(grid, 'data-theme-id', id); paintBars();
+    });
+  }
+  var seg = document.querySelector('.seg');
+  if (seg) {
+    check(seg, 'data-mode-id', root.getAttribute('data-mode') || 'system');
+    seg.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-mode-id]'); if (!b) return;
+      var mode = b.getAttribute('data-mode-id');
+      applyMode(mode); save('jaib-mode', mode === 'system' ? null : mode); check(seg, 'data-mode-id', mode); paintBars();
+    });
+  }
+  var flow = document.querySelector('.flow-toggle');
+  if (flow) {
+    var show = function () {
+      var on = root.classList.contains('flow');
+      flow.setAttribute('aria-pressed', on ? 'true' : 'false');
+      flow.textContent = 'Moving pictures: ' + (on ? 'on' : 'off');
+    };
+    show();
+    flow.addEventListener('click', function () {
+      var on = !root.classList.contains('flow');
+      root.classList.toggle('flow', on); save('jaib-flow', on ? null : 'off'); show();
+    });
+  }
+})();
+
 (function () {
   var root = document.documentElement;
   var full = root.classList.contains('motion');   // false when the system asks for reduced motion

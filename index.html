@@ -17,15 +17,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700..800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/site.css?v=8">
+  <link rel="stylesheet" href="/assets/site.css?v=9">
   <script>
     // .js: gentle motion (fades, the logo, the phone's screens). .motion: big motion too, unless the system asks for less.
     (function (d) {
       d.classList.add('js');
       if (!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) d.classList.add('motion');
+      // the visitor's own choices, kept in this browser only: theme, light or dark, moving pictures
+      var t = null, m = null, f = null;
+      try { t = localStorage.getItem('jaib-theme'); m = localStorage.getItem('jaib-mode'); f = localStorage.getItem('jaib-flow'); } catch (e) {}
+      if (t && /^[a-z]+$/.test(t) && t !== 'josh') d.setAttribute('data-theme', t);
+      if (m === 'light' || m === 'dark') d.setAttribute('data-mode', m);
+      if (f !== 'off') d.classList.add('flow');
     })(document.documentElement);
   </script>
-  <script src="/assets/site.js?v=8" defer></script>
+  <script src="/assets/site.js?v=9" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -254,6 +260,35 @@
       </div>
     </section>
 
+    <section id="themes" class="themes">
+      <div class="wrap">
+        <p class="kicker reveal">Make it yours</p>
+        <h2 class="reveal">Ten themes, each in light and dark</h2>
+        <p class="sub reveal">The same themes as in the app, each named for its mood. Pick one and this site changes with it. In
+          the app, choose yours in Menu, Display, Theme.</p>
+        <div class="theme-grid reveal" role="radiogroup" aria-label="Theme">
+          <button type="button" role="radio" aria-checked="false" data-theme-id="sukoon"><span class="sw" style="--a:#1b1d21;--b:#c8102e;--c:#ff5a6a"></span><span><b>Sukoon</b><small>Calm</small></span></button>
+          <button type="button" role="radio" aria-checked="true" data-theme-id="josh"><span class="sw" style="--a:#c8102e;--b:#ffffff;--c:#7a0a1c"></span><span><b>Josh</b><small>Zeal: the classic JAIB red</small></span></button>
+          <button type="button" role="radio" aria-checked="false" data-theme-id="apnaiyat"><span class="sw" style="--a:#0e1b2a;--b:#c4382b;--c:#ff6f61"></span><span><b>Apnaiyat</b><small>Warmth, belonging</small></span></button>
+          <button type="button" role="radio" aria-checked="false" data-theme-id="taazgi"><span class="sw" style="--a:#a6e67a;--b:#1f5c10;--c:#1f3a12"></span><span><b>Taazgi</b><small>Freshness</small></span></button>
+          <button type="button" role="radio" aria-checked="false" data-theme-id="khamoshi"><span class="sw" style="--a:#0b1426;--b:#2563d9;--c:#6b97ff"></span><span><b>Khamoshi</b><small>Stillness: made for dark mode</small></span></button>
+          <button type="button" role="radio" aria-checked="false" data-theme-id="itminan"><span class="sw" style="--a:#0a6e65;--b:#dcefec;--c:#3cc2b2"></span><span><b>Itminan</b><small>Assurance</small></span></button>
+          <button type="button" role="radio" aria-checked="false" data-theme-id="khwab"><span class="sw" style="--a:#4347c9;--b:#e7e7fa;--c:#9295ff"></span><span><b>Khwab</b><small>Dream</small></span></button>
+          <button type="button" role="radio" aria-checked="false" data-theme-id="umang"><span class="sw" style="--a:#a8430b;--b:#b0480c;--c:#ff8a3d"></span><span><b>Umang</b><small>Zest</small></span></button>
+          <button type="button" role="radio" aria-checked="false" data-theme-id="fakhr"><span class="sw" style="--a:#01411c;--b:#ffffff;--c:#5cc98a"></span><span><b>Fakhr</b><small>Pride: the green of the flag</small></span></button>
+          <button type="button" role="radio" aria-checked="false" data-theme-id="wazahat"><span class="sw" style="--a:#000000;--b:#ffffff;--c:#5be38f"></span><span><b>Wazahat</b><small>Clarity: highest contrast</small></span></button>
+        </div>
+        <div class="mode-row reveal">
+          <div class="seg" role="radiogroup" aria-label="Light or dark">
+            <button type="button" role="radio" aria-checked="true" data-mode-id="system">Same as device</button>
+            <button type="button" role="radio" aria-checked="false" data-mode-id="light">Light</button>
+            <button type="button" role="radio" aria-checked="false" data-mode-id="dark">Dark</button>
+          </div>
+          <button type="button" class="flow-toggle" aria-pressed="true">Moving pictures: on</button>
+        </div>
+        <p class="note reveal">Your choice is kept in this browser only. The phone pictures on this site show Josh.</p>
+      </div>
+    </section>
     <section id="works" class="works">
       <div class="wrap">
         <p class="kicker reveal">Works with</p>
@@ -387,6 +422,7 @@
       <a href="/privacy/">Privacy policy</a>
       <a href="/updates/">Updates</a>
       <a href="/blog/">Blog</a>
+      <a href="/#themes">Themes</a>
       <a href="mailto:hello@jaib.pk">hello@jaib.pk</a>
       <a href="https://play.google.com/store/apps/details?id=pk.packistan.jaib" rel="noopener" target="_blank">Google Play (closed beta)</a>
       <span>Made in Pakistan</span>
