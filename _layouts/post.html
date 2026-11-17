@@ -1,0 +1,9 @@
+---
+layout: default
+---
+<h1>{{ page.title }}</h1>
+<p class="post-meta"><a href="/blog/">Blog</a> · {{ page.date | date: "%-d %B %Y" }}{% if page.version %} · JAIB {{ page.version }}{% endif %}</p>
+<article class="post">
+{{ content }}
+</article>
+<p class="post-more"><a href="/blog/">All posts</a> · <a href="/updates/">Every update</a> · <a href="mailto:hello@jaib.pk">Write to us</a></p>

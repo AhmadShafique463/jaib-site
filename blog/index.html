@@ -1,0 +1,20 @@
+---
+title: JAIB blog
+description: Posts from the JAIB team about what each update brings, and why.
+layout: default
+---
+
+<h1>JAIB blog</h1>
+<p>What each update brings, and why. For a quick list of every release, see <a href="/updates/">Updates</a>.</p>
+
+<ol class="posts">
+{% for post in site.posts %}
+  <li>
+    <a href="{{ post.url }}">
+      <span class="when">{{ post.date | date: "%-d %B %Y" }}{% if post.version %} · {{ post.version }}{% endif %}</span>
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.summary }}</p>
+    </a>
+  </li>
+{% endfor %}
+</ol>
