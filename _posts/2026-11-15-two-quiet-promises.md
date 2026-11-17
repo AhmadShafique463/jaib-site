@@ -6,6 +6,7 @@ summary: "Nothing missed when your phone stops JAIB, and nothing silent if it ev
 version: "0.2.38"
 date: 2026-11-15 14:00:00 +0500
 permalink: /blog/two-quiet-promises/
+instagram: "https://www.instagram.com/jaibpk/"
 tiktok: "https://www.tiktok.com/@jaibpk/photo/7709193352696122676"
 facebook: "https://www.facebook.com/people/JAIB/61596306664204/"
 linkedin: "https://www.linkedin.com/feed/update/urn:li:share:7528502978148892672/"
