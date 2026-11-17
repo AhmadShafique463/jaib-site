@@ -4,36 +4,44 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title | default: "JAIB" }}</title>
-  <meta name="theme-color" content="#c8102e">
+  <meta name="description" content="{{ page.description | default: 'How JAIB, a personal money app for Android made in Pakistan, handles your data: kept on your phone, encrypted, with no JAIB account.' }}">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#c8102e" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#8f0b21" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="/favicon.png">
   <link rel="canonical" href="https://jaib.pk{{ page.url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700..800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="top">
     <div class="wrap">
-      <a class="mark" href="/"><img src="/assets/logo.png" alt="">JAIB</a>
-      <nav>
+      <a class="mark" href="/"><img src="/assets/logo.png" alt="" width="34" height="34">JAIB</a>
+      <nav aria-label="Main">
         <a class="hide-sm" href="/#features">Features</a>
+        <a class="hide-sm" href="/#gmail">Gmail</a>
         <a href="/privacy/">Privacy</a>
         <a href="/#contact">Contact</a>
       </nav>
     </div>
   </header>
-  <main class="doc">
+  <main id="main" class="doc">
     <div class="wrap">
       {{ content }}
     </div>
   </main>
   <footer>
     <div class="wrap">
-      <a class="mark" href="/"><img src="/assets/logo.png" alt="">JAIB</a>
+      <a class="mark" href="/"><img src="/assets/logo.png" alt="" width="34" height="34" loading="lazy">JAIB</a>
       <a href="/privacy/">Privacy policy</a>
       <a href="mailto:hello@jaib.pk">hello@jaib.pk</a>
+      <span>Made in Pakistan</span>
       <span>© 2026 JAIB</span>
+      <span class="legal">Names and logos of banks and wallets belong to their owners; JAIB is not connected to or
+        endorsed by any bank.</span>
     </div>
   </footer>
 </body>

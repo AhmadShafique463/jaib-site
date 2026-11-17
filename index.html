@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>JAIB: your money, on your phone</title>
   <meta name="description" content="JAIB is a personal money app for Android, made in Pakistan. It builds your spending record from the payment alerts your banks and wallets already send you, and keeps it on your phone, encrypted.">
-  <meta name="theme-color" content="#c8102e">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#c8102e" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#8f0b21" media="(prefers-color-scheme: dark)">
   <meta property="og:title" content="JAIB: your money, on your phone">
   <meta property="og:description" content="Your spending record, built from the payment alerts you already get. Kept on your phone, encrypted.">
   <meta property="og:image" content="https://jaib.pk/assets/logo.png">
@@ -14,14 +16,18 @@
   <link rel="canonical" href="https://jaib.pk/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700..800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="/assets/site.js" defer></script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="top">
     <div class="wrap">
-      <a class="mark" href="/"><img src="/assets/logo.png" alt="">JAIB</a>
-      <nav>
+      <a class="mark" href="/"><img src="/assets/logo.png" alt="" width="34" height="34">JAIB</a>
+      <nav aria-label="Main">
+        <a class="hide-sm" href="#how">How it works</a>
         <a class="hide-sm" href="#features">Features</a>
         <a class="hide-sm" href="#gmail">Gmail</a>
         <a href="/privacy/">Privacy</a>
@@ -30,56 +36,109 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <div class="hero">
       <div class="wrap">
-        <div>
+        <div class="hero-copy">
           <span class="badge">Closed beta on Android</span>
-          <h1>Your money,<br><em>on your phone.</em></h1>
+          <h1><span class="line">Your money,</span> <span class="line"><em>in your jaib.</em></span></h1>
           <p class="lead">JAIB builds your spending record from the payment alerts your banks and wallets already send
             you. No typing in every payment, no account on our servers: your record stays on your phone, encrypted.</p>
           <div class="cta">
-            <a class="btn primary" href="#how">See how it works</a>
-            <a class="btn ghost" href="/privacy/">Read the privacy policy</a>
+            <a class="btn light" href="#how">See how it works</a>
+            <a class="btn outline" href="/privacy/">Read the privacy policy</a>
+          </div>
+          <p class="aside"><span lang="ur">جیب</span> (jaib) is Urdu for pocket.</p>
+        </div>
+        <div class="hero-stage">
+          <svg class="pocket" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+            <path class="pocket-line" d="M 134 130 L 254 130 A 18 18 0 0 1 272 148 L 272 216 A 16 16 0 0 1 264 229 L 207 272 A 12 12 0 0 1 193 272 L 136 229 A 16 16 0 0 1 128 216 L 128 190"/>
+            <path class="pocket-coin" d="M 0 -13.5 A 13.5 13.5 0 1 1 0 13.5 A 13.5 13.5 0 1 1 0 -13.5 Z" transform="translate(200 185)"/>
+          </svg>
+          <div class="phone">
+            <picture>
+              <source srcset="/assets/budgets-dark.webp" media="(prefers-color-scheme: dark)">
+              <img src="/assets/budgets-light.webp" alt="JAIB's Budgets page with sample money: safe to spend each day, and each category's budget" width="540" height="1200" fetchpriority="high">
+            </picture>
           </div>
         </div>
-        <div class="phones" aria-label="JAIB's Budgets, Insights and Savings goals pages, with sample money">
-          <div class="phone p2">
-            <img class="shot-light" src="/assets/insights-light.webp" alt="Insights: spending compared with the months before" width="400" height="1200" loading="eager">
-            <img class="shot-dark" src="/assets/insights-dark.webp" alt="" width="400" height="1200">
-          </div>
-          <div class="phone p3">
-            <img class="shot-light" src="/assets/goals-light.webp" alt="Savings goals with progress for each" width="400" height="1200" loading="eager">
-            <img class="shot-dark" src="/assets/goals-dark.webp" alt="" width="400" height="1200">
-          </div>
-          <div class="phone p1">
-            <img class="shot-light" src="/assets/budgets-light.webp" alt="Budgets: safe to spend each day and each category's budget" width="400" height="1200" loading="eager">
-            <img class="shot-dark" src="/assets/budgets-dark.webp" alt="" width="400" height="1200">
-          </div>
+      </div>
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-run">
+          <span>No JAIB account</span><span>Kept on your phone, encrypted</span><span>No permission to read your SMS</span><span>Gmail read-only</span><span>Money data never sold</span><span>Delete everything any time</span>
+          <span>No JAIB account</span><span>Kept on your phone, encrypted</span><span>No permission to read your SMS</span><span>Gmail read-only</span><span>Money data never sold</span><span>Delete everything any time</span>
         </div>
       </div>
     </div>
 
-    <section id="how" class="alt">
+    <section id="how">
       <div class="wrap">
         <p class="kicker">How it works</p>
         <h2>Your alerts become your record</h2>
         <p class="sub">Every payment already sends you an alert, by notification, text or email. JAIB reads them where
           they arrive, on your phone, and keeps the payments.</p>
-        <div class="steps">
-          <div class="step">
+        <ol class="steps">
+          <li class="step reveal">
+            <div class="demo" aria-hidden="true">
+              <div class="notif"><span class="notif-icon"></span><span><b>Payment alert</b>Rs 1,250 paid at a grocery store</span></div>
+            </div>
             <h3>An alert arrives</h3>
             <p>Your bank or wallet tells you about a payment, as it always does.</p>
-          </div>
-          <div class="step">
+          </li>
+          <li class="step reveal">
+            <div class="demo" aria-hidden="true">
+              <div class="sort">
+                <span class="keep">Payment: kept</span>
+                <span class="drop">OTP</span><span class="drop">Chat</span><span class="drop">Promotion</span>
+              </div>
+            </div>
             <h3>JAIB reads it on your phone</h3>
             <p>It finds the amount, the account and where the money went. Chats, OTPs and promotions are dropped at once.</p>
-          </div>
-          <div class="step">
+          </li>
+          <li class="step reveal">
+            <div class="demo" aria-hidden="true">
+              <div class="row"><span class="row-icon"></span><span class="row-name">Groceries<small>Today</small></span><span class="row-amt">Rs 1,250</span></div>
+            </div>
             <h3>You see where money goes</h3>
             <p>Each payment lands in Activity with its category, ready for your budgets, bills and goals.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="inside" aria-labelledby="inside-h">
+      <div class="wrap">
+        <p class="kicker">Inside JAIB</p>
+        <h2 id="inside-h">See where it all goes</h2>
+      </div>
+      <div class="strip">
+        <figure class="shot">
+          <div class="phone">
+            <picture>
+              <source srcset="/assets/budgets-dark.webp" media="(prefers-color-scheme: dark)">
+              <img src="/assets/budgets-light.webp" alt="Budgets with sample money: safe to spend each day and each category's budget" width="540" height="1200" loading="lazy" decoding="async">
+            </picture>
           </div>
-        </div>
+          <figcaption><b>Budgets</b> Safe to spend each day, and how each category is doing.</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="phone">
+            <picture>
+              <source srcset="/assets/insights-dark.webp" media="(prefers-color-scheme: dark)">
+              <img src="/assets/insights-light.webp" alt="Insights with sample money: this month's spending compared with the months before" width="540" height="1200" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption><b>Insights</b> This month compared with the months before, and your pace.</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="phone">
+            <picture>
+              <source srcset="/assets/goals-dark.webp" media="(prefers-color-scheme: dark)">
+              <img src="/assets/goals-light.webp" alt="Savings goals with sample money: progress towards each goal and its date" width="540" height="1200" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption><b>Savings goals</b> A goal and a date, and whether you are on track.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -90,43 +149,43 @@
         <p class="sub">Made for how money moves in Pakistan: rupees first, bank and wallet accounts side by side, and the
           people you lend to.</p>
         <div class="grid">
-          <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
+          <div class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
             <h3>Activity</h3>
             <p>Every payment by day and month, with categories and a search that finds people, shops and amounts.</p>
           </div>
-          <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <div class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
             <h3>Budgets</h3>
             <p>A budget for each category and a daily safe-to-spend that keeps up with what you really spend.</p>
           </div>
-          <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></div>
+          <div class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></div>
             <h3>Coming up</h3>
             <p>Bills and subscriptions JAIB sees repeat, with the date each is due.</p>
           </div>
-          <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.5 6 .8-4.4 4.2 1.1 6L12 16.6 6.7 19.5l1.1-6L3.4 9.3l6-.8z"/></svg></div>
+          <div class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.5 6 .8-4.4 4.2 1.1 6L12 16.6 6.7 19.5l1.1-6L3.4 9.3l6-.8z"/></svg></div>
             <h3>Savings goals</h3>
             <p>Hajj, a new bike or Eid: set a goal and a date, and see if you are on track.</p>
           </div>
-          <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 4.5a3.5 3.5 0 010 7M21 20c0-2.6-1.6-4.8-4-5.6"/></svg></div>
+          <div class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 4.5a3.5 3.5 0 010 7M21 20c0-2.6-1.6-4.8-4-5.6"/></svg></div>
             <h3>People</h3>
             <p>Who owes whom, due dates, and settling up, both ways.</p>
           </div>
-          <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div>
+          <div class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div>
             <h3>JAIB Assistant</h3>
             <p>Ask about your money in plain words. The AI runs on your phone, so what you ask never leaves it.</p>
           </div>
-          <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 01-.6-9A6 6 0 0118 8.5a4 4 0 01-1 9.5z"/><path d="M12 11v6M9.5 14.5L12 17l2.5-2.5"/></svg></div>
+          <div class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4.5 4.5 0 01-.6-9A6 6 0 0118 8.5a4 4 0 01-1 9.5z"/><path d="M12 11v6M9.5 14.5L12 17l2.5-2.5"/></svg></div>
             <h3>Encrypted backups</h3>
             <p>Back up to your own Google Drive or to a file, encrypted on the phone with your passphrase first.</p>
           </div>
-          <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg></div>
+          <div class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg></div>
             <h3>Widgets and themes</h3>
             <p>Safe to spend and your budgets on the home screen, in light, dark and colour themes.</p>
           </div>
@@ -134,7 +193,7 @@
       </div>
     </section>
 
-    <section id="privacy" class="alt">
+    <section id="privacy" class="ink">
       <div class="wrap promise">
         <div>
           <p class="kicker">Private by design</p>
@@ -166,6 +225,7 @@
             <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>,
             including the Limited Use requirements. Disconnect Gmail at any time in JAIB's Sources, or remove JAIB's access
             in your <a href="https://myaccount.google.com/permissions">Google Account</a>.</p>
+          <p class="small"><a href="/privacy/">Read the full privacy policy</a></p>
         </div>
       </div>
     </section>
@@ -175,16 +235,17 @@
         <p class="kicker">Contact</p>
         <h2>Questions or problems?</h2>
         <p class="sub">Write to us and a person reads it. Testers can also report from inside the app.</p>
-        <a class="btn primary" href="mailto:hello@jaib.pk">hello@jaib.pk</a>
+        <a class="mail" href="mailto:hello@jaib.pk">hello@jaib.pk</a>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="wrap">
-      <a class="mark" href="/"><img src="/assets/logo.png" alt="">JAIB</a>
+      <a class="mark" href="/"><img src="/assets/logo.png" alt="" width="34" height="34" loading="lazy">JAIB</a>
       <a href="/privacy/">Privacy policy</a>
       <a href="mailto:hello@jaib.pk">hello@jaib.pk</a>
+      <span>Made in Pakistan</span>
       <span>© 2026 JAIB</span>
       <span class="legal">Pictures show sample money. Names and logos of banks and wallets belong to their owners; JAIB is
         not connected to or endorsed by any bank.</span>
