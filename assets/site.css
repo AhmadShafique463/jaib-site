@@ -1645,3 +1645,6 @@ footer .legal { flex-basis: 100%; }
 .post-social { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 36px; padding-top: 22px; border-top: 1px solid var(--divider); }
 .post-social > span { font-weight: 800; color: var(--muted); font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
 .post-social .social { margin-left: 0; flex-basis: auto; }
+
+/* Become a tester: a second step under the contact email */
+.contact .tester-sub { margin-top: 36px; margin-bottom: 18px; }
