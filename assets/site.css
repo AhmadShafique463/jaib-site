@@ -156,11 +156,12 @@ h1 em { font-style: normal; color: var(--hero-em); }
 .btn.outline { color: var(--hero-ink); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.6); }
 .btn.outline:hover { background: rgba(255, 255, 255, 0.12); }
 
-.hero-stage { position: relative; height: 560px; }
+/* the stage is as tall as its phone (540 x 1200 screen, 9px frame, a little room for the tilt) */
+.hero-stage { --pw: 262px; position: relative; height: calc(var(--pw) * 2.2222 + 46px); }
 
 /* the app's opening tile: the pocket on a white tile, the coin swooping in */
 .tile {
-  position: absolute; left: 4%; top: 31%; width: 176px; aspect-ratio: 1;
+  position: absolute; left: 2%; top: 31%; width: clamp(104px, 27%, 176px); aspect-ratio: 1;
   border-radius: 25%; background: #ffffff; overflow: hidden;
   box-shadow: 0 22px 50px rgba(40, 0, 8, 0.35);
   transform: rotate(-8deg);
@@ -170,7 +171,7 @@ h1 em { font-style: normal; color: var(--hero-em); }
 .pocket-coin { fill: #c8102e; }
 
 /* the phone: its screens take turns, an alert drops in, and a note says where the payment went */
-.hero-phone { position: absolute; right: 4%; top: 18px; width: 262px; transform: rotate(4deg); }
+.hero-phone { position: absolute; right: 4%; top: 18px; width: var(--pw); transform: rotate(4deg); }
 .phone { border-radius: 36px; padding: 9px; background: var(--phone); box-shadow: var(--phone-shadow); }
 .phone img { border-radius: 28px; width: 100%; height: auto; }
 .screen { position: relative; border-radius: 28px; overflow: hidden; aspect-ratio: 540 / 1200; container-type: inline-size; }
@@ -254,16 +255,16 @@ h1 em { font-style: normal; color: var(--hero-em); }
 @media (max-width: 900px) {
   .hero { padding-top: 36px; }
   .hero > .wrap { grid-template-columns: 1fr; gap: 8px; padding-bottom: 120px; }
-  .hero-stage { height: 470px; }
+  .hero-stage { --pw: 220px; }
   .tile { width: 150px; left: 2%; top: 24%; }
-  .hero-phone { width: 220px; right: 6%; }
+  .hero-phone { right: 6%; }
 }
 @media (max-width: 480px) {
   h1 { font-size: 46px; }
   .lead { font-size: 18px; }
-  .hero-stage { height: 410px; }
+  .hero-stage { --pw: 188px; }
   .tile { width: 118px; left: 0; top: 30%; }
-  .hero-phone { width: 192px; right: 0; }
+  .hero-phone { right: 0; }
   .ticker { font-size: 15px; padding: 12px 0; bottom: 34px; }
 }
 
@@ -298,7 +299,8 @@ h2 { font-size: clamp(32px, 4.6vw, 52px); line-height: 1.04; letter-spacing: -0.
 /* inside: a moving strip of ten screens */
 .inside { background: var(--surface); padding-bottom: 72px; overflow: hidden; overflow: clip; }
 .inside .sub { margin-bottom: 20px; }
-.strip { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; padding: 0 16px; }
+/* sideways only: a strip that could also scroll up and down would catch the page's wheel and touch scrolling */
+.strip { overflow-x: auto; overflow-y: hidden; overscroll-behavior-y: auto; scroll-snap-type: x proximity; scrollbar-width: thin; padding: 0 16px; touch-action: pan-x pan-y; }
 .strip-run { display: flex; width: max-content; padding: 40px 0 24px; }
 .shot { margin: 0 34px 0 0; width: 220px; flex: none; scroll-snap-align: center; }
 .shot[aria-hidden="true"] { display: none; }
@@ -489,6 +491,7 @@ footer { padding: 34px 0 48px; color: var(--muted); font-size: 14px; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; }
 footer .mark { color: var(--text); }
 footer a { color: var(--muted); }
+footer .wrap > a:not(.mark) { padding-block: 8px; }
 footer .legal { flex-basis: 100%; }
 .social { display: flex; gap: 10px; margin-left: auto; }
 .social a { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: var(--text); background: var(--surface); transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease; }
@@ -530,7 +533,7 @@ footer .legal { flex-basis: 100%; }
 .doc h2 { font-size: clamp(26px, 3.4vw, 32px); margin: 48px 0 12px; letter-spacing: -0.025em; line-height: 1.15; }
 .doc h3 { font-size: 20px; margin: 28px 0 8px; }
 .doc li { margin: 6px 0; }
-.doc table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; }
+.doc table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; overflow-y: hidden; }
 .doc th, .doc td { border: 1px solid var(--divider); padding: 8px 10px; text-align: left; vertical-align: top; }
 .doc code { background: var(--surface); padding: 1px 6px; border-radius: 6px; font-size: 0.92em; overflow-wrap: anywhere; }
 .doc a { overflow-wrap: anywhere; }
