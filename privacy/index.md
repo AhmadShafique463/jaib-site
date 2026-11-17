@@ -1,5 +1,6 @@
 ---
 title: JAIB privacy policy
+layout: default
 ---
 
 # JAIB privacy policy

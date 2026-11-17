@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | default: "JAIB" }}</title>
+  <meta name="theme-color" content="#c8102e">
+  <link rel="icon" href="/favicon.png">
+  <link rel="canonical" href="https://jaib.pk{{ page.url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="mark" href="/"><img src="/assets/logo.png" alt="">JAIB</a>
+      <nav>
+        <a class="hide-sm" href="/#features">Features</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main class="doc">
+    <div class="wrap">
+      {{ content }}
+    </div>
+  </main>
+  <footer>
+    <div class="wrap">
+      <a class="mark" href="/"><img src="/assets/logo.png" alt="">JAIB</a>
+      <a href="/privacy/">Privacy policy</a>
+      <a href="mailto:hello@jaib.pk">hello@jaib.pk</a>
+      <span>© 2026 JAIB</span>
+    </div>
+  </footer>
+</body>
+</html>
