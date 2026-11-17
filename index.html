@@ -6,8 +6,8 @@
   <title>JAIB: your money, on your phone</title>
   <meta name="description" content="JAIB is a personal money app for Android, made in Pakistan. It builds your spending record from the payment alerts your banks and wallets already send you, and keeps it on your phone, encrypted.">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#c8102e" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#8f0b21" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#9e0c24" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#5c0715" media="(prefers-color-scheme: dark)">
   <meta property="og:title" content="JAIB: your money, on your phone">
   <meta property="og:description" content="Your spending record, built from the payment alerts you already get. Kept on your phone, encrypted.">
   <meta property="og:image" content="https://jaib.pk/assets/logo.png">
@@ -17,9 +17,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700..800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/site.css">
-  <script>document.documentElement.classList.add('js');</script>
-  <script src="/assets/site.js" defer></script>
+  <link rel="stylesheet" href="/assets/site.css?v=4">
+  <script>
+    // .js: gentle motion (fades, the logo, the phone's screens). .motion: big motion too, unless the system asks for less.
+    (function (d) {
+      d.classList.add('js');
+      if (!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) d.classList.add('motion');
+    })(document.documentElement);
+  </script>
+  <script src="/assets/site.js?v=4" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -34,6 +40,7 @@
         <a href="#contact">Contact</a>
       </nav>
     </div>
+    <span class="progress" aria-hidden="true"></span>
   </header>
 
   <main id="main">
@@ -48,18 +55,24 @@
             <a class="btn light" href="#how">See how it works</a>
             <a class="btn outline" href="/privacy/">Read the privacy policy</a>
           </div>
-          <p class="aside"><span lang="ur">جیب</span> (jaib) is Urdu for pocket.</p>
         </div>
         <div class="hero-stage">
-          <svg class="pocket" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
-            <path class="pocket-line" d="M 134 130 L 254 130 A 18 18 0 0 1 272 148 L 272 216 A 16 16 0 0 1 264 229 L 207 272 A 12 12 0 0 1 193 272 L 136 229 A 16 16 0 0 1 128 216 L 128 190"/>
-            <path class="pocket-coin" d="M 0 -13.5 A 13.5 13.5 0 1 1 0 13.5 A 13.5 13.5 0 1 1 0 -13.5 Z" transform="translate(200 185)"/>
-          </svg>
-          <div class="phone">
-            <picture>
-              <source srcset="/assets/budgets-dark.webp" media="(prefers-color-scheme: dark)">
-              <img src="/assets/budgets-light.webp" alt="JAIB's Budgets page with sample money: safe to spend each day, and each category's budget" width="540" height="1200" fetchpriority="high">
-            </picture>
+          <div class="tile" aria-hidden="true">
+            <svg class="pocket" viewBox="72 72 256 256" focusable="false">
+              <path class="pocket-line" d="M 134 130 L 254 130 A 18 18 0 0 1 272 148 L 272 216 A 16 16 0 0 1 264 229 L 207 272 A 12 12 0 0 1 193 272 L 136 229 A 16 16 0 0 1 128 216 L 128 190"/>
+              <path class="pocket-coin" d="M 0 -13.5 A 13.5 13.5 0 1 1 0 13.5 A 13.5 13.5 0 1 1 0 -13.5 Z" transform="translate(200 185)"/>
+            </svg>
+          </div>
+          <div class="phone hero-phone" role="img" aria-label="JAIB on a phone with sample money, showing Budgets, Insights, Savings goals, People and Coming up, and a payment alert being added to Groceries">
+            <div class="screen">
+              <picture class="scr scr1"><source srcset="/assets/budgets-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/budgets-light.webp" alt="" width="540" height="1200" fetchpriority="high"></picture>
+              <picture class="scr scr2"><source srcset="/assets/insights-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/insights-light.webp" alt="" width="540" height="1200" loading="lazy" decoding="async"></picture>
+              <picture class="scr scr3"><source srcset="/assets/goals-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/goals-light.webp" alt="" width="540" height="1200" loading="lazy" decoding="async"></picture>
+              <picture class="scr scr4"><source srcset="/assets/people-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/people-light.webp" alt="" width="540" height="1200" loading="lazy" decoding="async"></picture>
+              <picture class="scr scr5"><source srcset="/assets/coming-up-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/coming-up-light.webp" alt="" width="540" height="1200" loading="lazy" decoding="async"></picture>
+              <div class="heads-up" aria-hidden="true"><span class="notif-icon"></span><span><b>Payment alert · now</b>Rs 1,250 paid at a grocery store</span></div>
+              <div class="snack" aria-hidden="true">Rs 1,250 added to Groceries</div>
+            </div>
           </div>
         </div>
       </div>
@@ -73,9 +86,9 @@
 
     <section id="how">
       <div class="wrap">
-        <p class="kicker">How it works</p>
-        <h2>Your alerts become your record</h2>
-        <p class="sub">Every payment already sends you an alert, by notification, text or email. JAIB reads them where
+        <p class="kicker reveal">How it works</p>
+        <h2 class="reveal">Your alerts become your record</h2>
+        <p class="sub reveal">Every payment already sends you an alert, by notification, text or email. JAIB reads them where
           they arrive, on your phone, and keeps the payments.</p>
         <ol class="steps">
           <li class="step reveal">
@@ -108,87 +121,128 @@
 
     <section class="inside" aria-labelledby="inside-h">
       <div class="wrap">
-        <p class="kicker">Inside JAIB</p>
-        <h2 id="inside-h">See where it all goes</h2>
+        <p class="kicker reveal">Inside JAIB</p>
+        <h2 id="inside-h" class="reveal">See where it all goes</h2>
+        <p class="sub reveal">Ten of JAIB's pages, with sample money.</p>
       </div>
       <div class="strip">
-        <figure class="shot">
-          <div class="phone">
-            <picture>
-              <source srcset="/assets/budgets-dark.webp" media="(prefers-color-scheme: dark)">
-              <img src="/assets/budgets-light.webp" alt="Budgets with sample money: safe to spend each day and each category's budget" width="540" height="1200" loading="lazy" decoding="async">
-            </picture>
-          </div>
-          <figcaption><b>Budgets</b> Safe to spend each day, and how each category is doing.</figcaption>
-        </figure>
-        <figure class="shot">
-          <div class="phone">
-            <picture>
-              <source srcset="/assets/insights-dark.webp" media="(prefers-color-scheme: dark)">
-              <img src="/assets/insights-light.webp" alt="Insights with sample money: this month's spending compared with the months before" width="540" height="1200" loading="lazy" decoding="async">
-            </picture>
-          </div>
-          <figcaption><b>Insights</b> This month compared with the months before, and your pace.</figcaption>
-        </figure>
-        <figure class="shot">
-          <div class="phone">
-            <picture>
-              <source srcset="/assets/goals-dark.webp" media="(prefers-color-scheme: dark)">
-              <img src="/assets/goals-light.webp" alt="Savings goals with sample money: progress towards each goal and its date" width="540" height="1200" loading="lazy" decoding="async">
-            </picture>
-          </div>
-          <figcaption><b>Savings goals</b> A goal and a date, and whether you are on track.</figcaption>
-        </figure>
+        <div class="strip-run">
+          <figure class="shot"><div class="phone"><picture><source srcset="/assets/budgets-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/budgets-light.webp" alt="Budgets, with sample money: safe to spend each day, and how each category is doing." width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>Budgets</b> Safe to spend each day, and how each category is doing.</figcaption></figure>
+          <figure class="shot"><div class="phone"><picture><source srcset="/assets/insights-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/insights-light.webp" alt="Insights, with sample money: this month compared with the months before, and your pace." width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>Insights</b> This month compared with the months before, and your pace.</figcaption></figure>
+          <figure class="shot"><div class="phone"><picture><source srcset="/assets/spending-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/spending-light.webp" alt="Spending patterns, with sample money: which days money goes out, and where it went." width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>Spending patterns</b> Which days money goes out, and where it went.</figcaption></figure>
+          <figure class="shot"><div class="phone"><picture><source srcset="/assets/networth-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/networth-light.webp" alt="Net worth, with sample money: what you own minus what you owe, at each month’s end." width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>Net worth</b> What you own minus what you owe, at each month’s end.</figcaption></figure>
+          <figure class="shot"><div class="phone"><picture><source srcset="/assets/goals-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/goals-light.webp" alt="Savings goals, with sample money: a goal and a date, and whether you are on track." width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>Savings goals</b> A goal and a date, and whether you are on track.</figcaption></figure>
+          <figure class="shot"><div class="phone"><picture><source srcset="/assets/people-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/people-light.webp" alt="People, with sample money: who owes whom, and settling up, both ways." width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>People</b> Who owes whom, and settling up, both ways.</figcaption></figure>
+          <figure class="shot"><div class="phone"><picture><source srcset="/assets/coming-up-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/coming-up-light.webp" alt="Coming up, with sample money: bills and subscriptions JAIB sees repeat." width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>Coming up</b> Bills and subscriptions JAIB sees repeat.</figcaption></figure>
+          <figure class="shot"><div class="phone"><picture><source srcset="/assets/assistant-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/assistant-light.webp" alt="JAIB Assistant, with sample money: say what happened in plain words; it runs on your phone." width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>JAIB Assistant</b> Say what happened in plain words; it runs on your phone.</figcaption></figure>
+          <figure class="shot"><div class="phone"><picture><source srcset="/assets/categories-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/categories-light.webp" alt="Categories, with sample money: your own categories, and rules that sort payments." width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>Categories</b> Your own categories, and rules that sort payments.</figcaption></figure>
+          <figure class="shot"><div class="phone"><picture><source srcset="/assets/backup-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/backup-light.webp" alt="Data and backup, with sample money: encrypted backups to your Google Drive or a file." width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>Data and backup</b> Encrypted backups to your Google Drive or a file.</figcaption></figure>
+          <figure class="shot" aria-hidden="true"><div class="phone"><picture><source srcset="/assets/budgets-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/budgets-light.webp" alt="" width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>Budgets</b> Safe to spend each day, and how each category is doing.</figcaption></figure>
+          <figure class="shot" aria-hidden="true"><div class="phone"><picture><source srcset="/assets/insights-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/insights-light.webp" alt="" width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>Insights</b> This month compared with the months before, and your pace.</figcaption></figure>
+          <figure class="shot" aria-hidden="true"><div class="phone"><picture><source srcset="/assets/spending-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/spending-light.webp" alt="" width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>Spending patterns</b> Which days money goes out, and where it went.</figcaption></figure>
+          <figure class="shot" aria-hidden="true"><div class="phone"><picture><source srcset="/assets/networth-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/networth-light.webp" alt="" width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>Net worth</b> What you own minus what you owe, at each month’s end.</figcaption></figure>
+          <figure class="shot" aria-hidden="true"><div class="phone"><picture><source srcset="/assets/goals-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/goals-light.webp" alt="" width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>Savings goals</b> A goal and a date, and whether you are on track.</figcaption></figure>
+          <figure class="shot" aria-hidden="true"><div class="phone"><picture><source srcset="/assets/people-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/people-light.webp" alt="" width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>People</b> Who owes whom, and settling up, both ways.</figcaption></figure>
+          <figure class="shot" aria-hidden="true"><div class="phone"><picture><source srcset="/assets/coming-up-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/coming-up-light.webp" alt="" width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>Coming up</b> Bills and subscriptions JAIB sees repeat.</figcaption></figure>
+          <figure class="shot" aria-hidden="true"><div class="phone"><picture><source srcset="/assets/assistant-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/assistant-light.webp" alt="" width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>JAIB Assistant</b> Say what happened in plain words; it runs on your phone.</figcaption></figure>
+          <figure class="shot" aria-hidden="true"><div class="phone"><picture><source srcset="/assets/categories-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/categories-light.webp" alt="" width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>Categories</b> Your own categories, and rules that sort payments.</figcaption></figure>
+          <figure class="shot" aria-hidden="true"><div class="phone"><picture><source srcset="/assets/backup-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/backup-light.webp" alt="" width="540" height="1200" loading="lazy" decoding="async"></picture></div><figcaption><b>Data and backup</b> Encrypted backups to your Google Drive or a file.</figcaption></figure>
+        </div>
       </div>
     </section>
 
     <section id="features">
       <div class="wrap">
-        <p class="kicker">Features</p>
-        <h2>Everything for your money, in one place</h2>
-        <p class="sub">Made for how money moves in Pakistan: rupees first, bank and wallet accounts side by side, and the
+        <p class="kicker reveal">Features</p>
+        <h2 class="reveal">Everything for your money, in one place</h2>
+        <p class="sub reveal">Made for how money moves in Pakistan: rupees first, bank and wallet accounts side by side, and the
           people you lend to.</p>
-        <div class="grid">
-          <div class="card reveal">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
-            <h3>Activity</h3>
-            <p>Every payment by day and month, with categories and a search that finds people, shops and amounts.</p>
-          </div>
-          <div class="card reveal">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-            <h3>Budgets</h3>
-            <p>A budget for each category and a daily safe-to-spend that keeps up with what you really spend.</p>
-          </div>
-          <div class="card reveal">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></div>
-            <h3>Coming up</h3>
-            <p>Bills and subscriptions JAIB sees repeat, with the date each is due.</p>
-          </div>
-          <div class="card reveal">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.5 6 .8-4.4 4.2 1.1 6L12 16.6 6.7 19.5l1.1-6L3.4 9.3l6-.8z"/></svg></div>
-            <h3>Savings goals</h3>
-            <p>Hajj, a new bike or Eid: set a goal and a date, and see if you are on track.</p>
-          </div>
-          <div class="card reveal">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 4.5a3.5 3.5 0 010 7M21 20c0-2.6-1.6-4.8-4-5.6"/></svg></div>
-            <h3>People</h3>
-            <p>Who owes whom, due dates, and settling up, both ways.</p>
-          </div>
-          <div class="card reveal">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div>
-            <h3>JAIB Assistant</h3>
-            <p>Ask about your money in plain words. The AI runs on your phone, so what you ask never leaves it.</p>
-          </div>
-          <div class="card reveal">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4.5 4.5 0 01-.6-9A6 6 0 0118 8.5a4 4 0 01-1 9.5z"/><path d="M12 11v6M9.5 14.5L12 17l2.5-2.5"/></svg></div>
-            <h3>Encrypted backups</h3>
-            <p>Back up to your own Google Drive or to a file, encrypted on the phone with your passphrase first.</p>
-          </div>
-          <div class="card reveal">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg></div>
-            <h3>Widgets and themes</h3>
-            <p>Safe to spend and your budgets on the home screen, in light, dark and colour themes.</p>
-          </div>
+        <div class="bento">
+          <article class="feat f-activity tone-red reveal">
+            <div class="feat-text">
+              <h3>Activity</h3>
+              <p>Every payment by day and month, with categories and a search that finds people, shops and amounts.</p>
+            </div>
+            <div class="viz" aria-hidden="true">
+              <div class="v-week"><small>Days of the week</small><div class="v-bars"><i style="--h:28%"></i><i style="--h:40%"></i><i style="--h:22%"></i><i style="--h:36%"></i><i style="--h:44%"></i><i class="v-top" style="--h:92%"></i><i style="--h:58%"></i></div><div class="v-days"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div></div>
+              <div class="v-search">Search people, shops, amounts</div>
+              <div class="v-row"><span class="v-dot"></span>Groceries<b>-Rs 1,250</b></div>
+              <div class="v-row"><span class="v-dot v-in"></span>Received<b class="v-plus">+Rs 5,000</b></div>
+              <div class="v-row"><span class="v-dot v-bill"></span>Bills &amp; mobile<b>-Rs 3,480</b></div>
+            </div>
+          </article>
+          <article class="feat f-budgets reveal">
+            <div class="feat-text">
+              <h3>Budgets</h3>
+              <p>A budget for each category and a daily safe-to-spend that keeps up with what you really spend.</p>
+            </div>
+            <div class="viz" aria-hidden="true">
+              <div class="v-safe"><small>Safe to spend</small>Rs 1,340 <small>a day</small></div>
+              <div class="v-bar"><span>Food &amp; drinks</span><i style="--w:39%"></i></div>
+              <div class="v-bar v-amber"><span>Groceries</span><i style="--w:71%"></i></div>
+            </div>
+          </article>
+          <article class="feat f-coming reveal">
+            <div class="feat-text">
+              <h3>Coming up</h3>
+              <p>Bills and subscriptions JAIB sees repeat, with the date each is due.</p>
+            </div>
+            <div class="viz" aria-hidden="true">
+              <div class="v-cal"><small>Nov</small>22</div>
+              <div class="v-due">Internet bill<b>Rs 3,200</b></div>
+            </div>
+          </article>
+          <article class="feat f-goals reveal">
+            <div class="feat-text">
+              <h3>Savings goals</h3>
+              <p>Hajj, a new bike or Eid: set a goal and a date, and see if you are on track.</p>
+            </div>
+            <div class="viz v-goal" aria-hidden="true">
+              <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9" class="v-ring-bg"/><circle cx="18" cy="18" r="15.9" class="v-ring" pathLength="100" transform="rotate(-90 18 18)"/></svg>
+              <div><b>Hajj</b><small>Rs 58,400 of Rs 1,00,000</small><span class="v-chip">On track</span></div>
+            </div>
+          </article>
+          <article class="feat f-people reveal">
+            <div class="feat-text">
+              <h3>People</h3>
+              <p>Who owes whom, due dates, and settling up, both ways.</p>
+            </div>
+            <div class="viz" aria-hidden="true">
+              <div class="v-people"><span class="v-av">B</span><span class="v-av v-av2">F</span><span class="v-av v-av3">C</span></div>
+              <div class="v-owe"><small>People owe you</small><b class="v-plus">+Rs 28,000</b></div>
+            </div>
+          </article>
+          <article class="feat f-assistant tone-ink reveal">
+            <div class="feat-text">
+              <h3>JAIB Assistant</h3>
+              <p>Ask about your money in plain words. The AI runs on your phone, so what you ask never leaves it.</p>
+            </div>
+            <div class="viz v-chat" aria-hidden="true">
+              <div class="v-msg v-me">Paid 1,200 for groceries</div>
+              <div class="v-msg v-ai"><span class="v-tick"></span>Saved: Expense Rs 1,200 · Groceries · from Cash</div>
+              <div class="v-msg v-typing"><i></i><i></i><i></i></div>
+            </div>
+          </article>
+          <article class="feat f-backup reveal">
+            <div class="feat-text">
+              <h3>Encrypted backups</h3>
+              <p>Back up to your own Google Drive or to a file, encrypted on the phone with your passphrase first.</p>
+            </div>
+            <div class="viz v-lock" aria-hidden="true">
+              <span class="v-padlock"></span>
+              <div><small>Backup passphrase</small><span class="v-pass"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+            </div>
+          </article>
+          <article class="feat f-widgets reveal">
+            <div class="feat-text">
+              <h3>Widgets and themes</h3>
+              <p>Safe to spend and your budgets on the home screen, in light, dark and colour themes.</p>
+            </div>
+            <div class="viz v-widget" aria-hidden="true">
+              <div class="v-mini"><small>Safe to spend</small><b>Rs 1,340</b><small>a day for 18 days</small></div>
+              <div class="v-themes"><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -196,20 +250,20 @@
     <section id="privacy" class="ink">
       <div class="wrap promise">
         <div>
-          <p class="kicker">Private by design</p>
-          <h2>Your money picture never leaves your phone</h2>
-          <p class="sub">JAIB was built so that we never hold your money data. There is nothing on our side to leak,
+          <p class="kicker reveal">Private by design</p>
+          <h2 class="reveal">Your money picture never leaves your phone</h2>
+          <p class="sub reveal">JAIB was built so that we never hold your money data. There is nothing on our side to leak,
             sell or lose.</p>
           <ul class="checks">
-            <li>Your record is kept on your phone, encrypted, behind your PIN or fingerprint.</li>
-            <li>No JAIB account: nothing about your money is stored on a JAIB server.</li>
-            <li>No permission to read your SMS: JAIB reads only the payment alerts your phone shows.</li>
-            <li>Chats, one-time passwords and promotions are read in memory and dropped at once.</li>
-            <li>Your money data is never sold and never given to advertisers.</li>
-            <li>Delete everything from the app at any time.</li>
+            <li class="reveal">Your record is kept on your phone, encrypted, behind your PIN or fingerprint.</li>
+            <li class="reveal">No JAIB account: nothing about your money is stored on a JAIB server.</li>
+            <li class="reveal">No permission to read your SMS: JAIB reads only the payment alerts your phone shows.</li>
+            <li class="reveal">Chats, one-time passwords and promotions are read in memory and dropped at once.</li>
+            <li class="reveal">Your money data is never sold and never given to advertisers.</li>
+            <li class="reveal">Delete everything from the app at any time.</li>
           </ul>
         </div>
-        <div class="panel" id="gmail">
+        <div class="panel reveal" id="gmail">
           <h3>How JAIB uses Gmail</h3>
           <p>When you first open JAIB you sign in with Google, and JAIB asks for read-only access to your Gmail. Many banks
             send payment alerts only by email, and this is how JAIB reads them.</p>
@@ -229,13 +283,12 @@
         </div>
       </div>
     </section>
-
     <section id="contact" class="contact">
       <div class="wrap">
-        <p class="kicker">Contact</p>
-        <h2>Questions or problems?</h2>
-        <p class="sub">Write to us and a person reads it. Testers can also report from inside the app.</p>
-        <a class="mail" href="mailto:hello@jaib.pk">hello@jaib.pk</a>
+        <p class="kicker reveal">Contact</p>
+        <h2 class="reveal">Questions or problems?</h2>
+        <p class="sub reveal">Write to us and a person reads it. Testers can also report from inside the app.</p>
+        <a class="mail reveal" href="mailto:hello@jaib.pk">hello@jaib.pk</a>
       </div>
     </section>
   </main>
@@ -247,6 +300,11 @@
       <a href="mailto:hello@jaib.pk">hello@jaib.pk</a>
       <span>Made in Pakistan</span>
       <span>© 2026 JAIB</span>
+      <nav class="social" aria-label="JAIB on social media">
+        <a href="https://www.facebook.com/people/JAIB/61596306664204/" rel="me noopener" target="_blank" aria-label="JAIB on Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4.5h-2a3.5 3.5 0 00-3.5 3.5v2.5H7v3h2V20h3v-6.5h2.5l.5-3h-3V8.5a1 1 0 011-1h1.5z"/></svg></a>
+        <a href="https://www.linkedin.com/company/145438013/" rel="me noopener" target="_blank" aria-label="JAIB on LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 9.5v9M6.5 6v.01M10.5 18.5v-5a3 3 0 016 0v5M10.5 9.5v9"/></svg></a>
+        <a href="https://www.youtube.com/@jaibapp" rel="me noopener" target="_blank" aria-label="JAIB on YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.5 9.5l4 2.5-4 2.5z"/></svg></a>
+      </nav>
       <span class="legal">Pictures show sample money. Names and logos of banks and wallets belong to their owners; JAIB is
         not connected to or endorsed by any bank.</span>
     </div>

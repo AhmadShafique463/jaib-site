@@ -6,14 +6,21 @@
   <title>{{ page.title | default: "JAIB" }}</title>
   <meta name="description" content="{{ page.description | default: 'How JAIB, a personal money app for Android made in Pakistan, handles your data: kept on your phone, encrypted, with no JAIB account.' }}">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#c8102e" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#8f0b21" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#9e0c24" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#5c0715" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="/favicon.png">
   <link rel="canonical" href="https://jaib.pk{{ page.url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700..800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="/assets/site.css?v=4">
+  <script>
+    (function (d) {
+      d.classList.add('js');
+      if (!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) d.classList.add('motion');
+    })(document.documentElement);
+  </script>
+  <script src="/assets/site.js?v=4" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -27,6 +34,7 @@
         <a href="/#contact">Contact</a>
       </nav>
     </div>
+    <span class="progress" aria-hidden="true"></span>
   </header>
   <main id="main" class="doc">
     <div class="wrap">
@@ -40,6 +48,11 @@
       <a href="mailto:hello@jaib.pk">hello@jaib.pk</a>
       <span>Made in Pakistan</span>
       <span>© 2026 JAIB</span>
+      <nav class="social" aria-label="JAIB on social media">
+        <a href="https://www.facebook.com/people/JAIB/61596306664204/" rel="me noopener" target="_blank" aria-label="JAIB on Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4.5h-2a3.5 3.5 0 00-3.5 3.5v2.5H7v3h2V20h3v-6.5h2.5l.5-3h-3V8.5a1 1 0 011-1h1.5z"/></svg></a>
+        <a href="https://www.linkedin.com/company/145438013/" rel="me noopener" target="_blank" aria-label="JAIB on LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 9.5v9M6.5 6v.01M10.5 18.5v-5a3 3 0 016 0v5M10.5 9.5v9"/></svg></a>
+        <a href="https://www.youtube.com/@jaibapp" rel="me noopener" target="_blank" aria-label="JAIB on YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.5 9.5l4 2.5-4 2.5z"/></svg></a>
+      </nav>
       <span class="legal">Names and logos of banks and wallets belong to their owners; JAIB is not connected to or
         endorsed by any bank.</span>
     </div>
