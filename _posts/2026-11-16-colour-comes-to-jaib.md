@@ -6,6 +6,10 @@ summary: "A colour for every account and category, and budgets that open as page
 version: "0.2.39"
 date: 2026-11-16 10:00:00 +0500
 permalink: /blog/colour-comes-to-jaib/
+tiktok: "https://www.tiktok.com/@jaibpk/photo/7709193662256811272"
+facebook: "https://www.facebook.com/people/JAIB/61596306664204/"
+linkedin: "https://www.linkedin.com/feed/update/urn:li:share:7528505108645486593/"
+youtube: "https://www.youtube.com/post/UgkxiCaNYWqoT1wKVwf34cGBrOvUdOT0rh4p"
 ---
 
 JAIB is a money app for Pakistan that reads your bank and wallet alerts on your phone and keeps the record there, encrypted.

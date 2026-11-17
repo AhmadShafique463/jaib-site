@@ -6,6 +6,10 @@ summary: "Nothing missed when your phone stops JAIB, and nothing silent if it ev
 version: "0.2.38"
 date: 2026-11-15 14:00:00 +0500
 permalink: /blog/two-quiet-promises/
+tiktok: "https://www.tiktok.com/@jaibpk/photo/7709193352696122676"
+facebook: "https://www.facebook.com/people/JAIB/61596306664204/"
+linkedin: "https://www.linkedin.com/feed/update/urn:li:share:7528502978148892672/"
+youtube: "https://www.youtube.com/post/UgkxDPogV4lyQ9us3pmc-lJUcVf52nPNSIT3"
 ---
 
 JAIB is a money app for Pakistan that reads your bank and wallet alerts on your phone and keeps the record there, encrypted.

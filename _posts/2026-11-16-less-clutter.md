@@ -6,6 +6,10 @@ summary: "More room on every list, an account that opens on its payments, and bu
 version: "0.2.40"
 date: 2026-11-16 14:00:00 +0500
 permalink: /blog/less-clutter/
+tiktok: "https://www.tiktok.com/@jaibpk/photo/7709193935461027079"
+facebook: "https://www.facebook.com/people/JAIB/61596306664204/"
+linkedin: "https://www.linkedin.com/feed/update/urn:li:share:7528506347689078784/"
+youtube: "https://www.youtube.com/post/Ugkx0iooc6oFSAfypmbuzsqgtJUAI0rBr8GZ"
 ---
 
 JAIB is a money app for Pakistan that reads your bank and wallet alerts on your phone and keeps the record there, encrypted.

@@ -5,6 +5,10 @@ description: "JAIB has its own home on the web: what JAIB is, how to reach us, a
 summary: "JAIB has its own home on the web: what JAIB is, how to reach us, and every update in one place."
 date: 2026-11-17 12:00:00 +0500
 permalink: /blog/jaib-pk-opens/
+tiktok: "https://www.tiktok.com/@jaibpk/photo/7709194243402681608"
+facebook: "https://www.facebook.com/people/JAIB/61596306664204/"
+linkedin: "https://www.linkedin.com/feed/update/urn:li:share:7528508232689152000/"
+youtube: "https://www.youtube.com/post/Ugkxwr3VrwRNngZ8iH36NbLZCZL4OjCbJxxy"
 ---
 
 JAIB now has its own home on the web, at jaib.pk.

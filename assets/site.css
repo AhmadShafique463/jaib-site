@@ -1640,3 +1640,8 @@ footer .legal { flex-basis: 100%; }
 .help-body a, .help-body .val { font-weight: 800; font-size: 17px; overflow-wrap: anywhere; }
 .help-body small { color: var(--muted); font-size: 14px; line-height: 1.45; }
 .help-src { margin: 20px 0 0; color: var(--muted); font-size: 13.5px; }
+
+/* a blog post's own posts on JAIB's social accounts */
+.post-social { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 36px; padding-top: 22px; border-top: 1px solid var(--divider); }
+.post-social > span { font-weight: 800; color: var(--muted); font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
+.post-social .social { margin-left: 0; flex-basis: auto; }

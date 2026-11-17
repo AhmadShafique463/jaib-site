@@ -6,6 +6,11 @@ summary: "A budget widget, a page for every budget, Insights that explain their 
 version: "0.2.35"
 date: 2026-11-10 12:00:00 +0500
 permalink: /blog/budgets-everywhere/
+instagram: "https://www.instagram.com/jaibpk/"
+tiktok: "https://www.tiktok.com/@jaibpk/photo/7709188393439087878"
+facebook: "https://www.facebook.com/people/JAIB/61596306664204/"
+linkedin: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7527803958656909314/"
+youtube: "https://www.youtube.com/post/UgkxEx4gJ1ceTlFv51jLzpeb0oroBkTu6n6G"
 ---
 
 JAIB is a money app for Pakistan that reads your bank and wallet alerts on your phone and keeps the record there, encrypted. Nothing about your money leaves your phone.

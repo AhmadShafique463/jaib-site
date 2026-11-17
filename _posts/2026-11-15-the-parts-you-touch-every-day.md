@@ -6,6 +6,11 @@ summary: "Pull to refresh with our coin, budget names in full, and an app made f
 version: "0.2.36"
 date: 2026-11-15 10:00:00 +0500
 permalink: /blog/the-parts-you-touch-every-day/
+instagram: "https://www.instagram.com/jaibpk/"
+tiktok: "https://www.tiktok.com/@jaibpk/photo/7709189815941565704"
+facebook: "https://www.facebook.com/people/JAIB/61596306664204/"
+linkedin: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7527803958656909314/"
+youtube: "https://www.youtube.com/post/UgkxEx4gJ1ceTlFv51jLzpeb0oroBkTu6n6G"
 ---
 
 JAIB is a money app for Pakistan that reads your bank and wallet alerts on your phone and keeps the record there, encrypted. Nothing about your money leaves your phone.
