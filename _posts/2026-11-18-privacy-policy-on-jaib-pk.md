@@ -6,6 +6,11 @@ summary: "JAIB's privacy policy now lives at jaib.pk/privacy, and the app opens 
 version: "0.2.41"
 date: 2026-11-18 12:00:00 +0500
 permalink: /blog/privacy-policy-on-jaib-pk/
+tiktok: "https://www.tiktok.com/@jaibpk/photo/7709472222800317703"
+instagram: "https://www.instagram.com/p/Df4ZWcFzcUx/"
+facebook: "https://www.facebook.com/people/JAIB/61596306664204/"
+linkedin: "https://www.linkedin.com/feed/update/urn:li:share:7528779090179530752/"
+youtube: "https://www.youtube.com/post/Ugkx90-KmEuosiiQupDMiO7RcfI9ngxgKItS"
 ---
 
 JAIB is a money app for Pakistan that reads your bank and wallet alerts on your phone and keeps the record there, encrypted.
