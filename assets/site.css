@@ -1642,7 +1642,7 @@ footer .legal { flex-basis: 100%; }
 .contact .tester-sub { margin-top: 36px; margin-bottom: 18px; }
 /* Follow JAIB: jaib.pk links every JAIB account by name (the hub for the social posts) */
 .contact .follow-sub { margin-top: 36px; margin-bottom: 14px; }
-.follow { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 820px; margin-inline: auto; }
+.follow { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 940px; margin-inline: auto; }
 .follow a { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px 9px 12px; border-radius: 999px; color: var(--hero-ink); text-decoration: none; font-weight: 700; font-size: 15px; border: 1.5px solid color-mix(in srgb, var(--hero-ink) 45%, transparent); transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease; }
 .follow a:hover { background: var(--hero-ink); color: var(--hero); transform: translateY(-2px); }
 .follow svg { width: 20px; height: 20px; flex: none; }
