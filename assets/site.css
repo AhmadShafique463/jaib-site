@@ -576,6 +576,8 @@ footer .legal { flex-basis: 100%; }
 .stores .soon { display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 16px; border-radius: 8px; background: #000; color: #fff; box-shadow: inset 0 0 0 1px #a6a6a6; font-weight: 700; font-size: 15px; white-space: nowrap; cursor: default; user-select: none; opacity: 0.85; }
 .stores .soon svg { width: 20px; height: 20px; flex: none; }
 .stores .note { flex-basis: 100%; font-size: 14px; font-weight: 600; color: var(--hero-soft); }
+.stores .note a { color: var(--hero-ink); text-decoration: underline; text-underline-offset: 2px; }
+.tester-steps { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 
 /* works with: plain names, no logos (identification only) */
 .works .names h3 { font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 28px 0 12px; }
