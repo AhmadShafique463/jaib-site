@@ -207,7 +207,7 @@ h1 em { font-style: normal; color: var(--hero-em); }
 .pocket-line { fill: none; stroke: var(--mark); stroke-width: 20; stroke-linecap: round; stroke-linejoin: round; }
 .pocket-coin { fill: var(--mark); }
 
-/* the phone: its screens take turns, an alert drops in, and a note says where the payment went */
+/* the phone: one still screen, an alert drops in, and a note says where the payment went */
 .hero-phone { position: absolute; right: 4%; top: 18px; width: var(--pw); transform: rotate(4deg); }
 .phone { border-radius: 36px; padding: 9px; background: var(--phone); box-shadow: var(--phone-shadow); }
 .phone img { border-radius: 28px; width: 100%; height: auto; }
@@ -215,14 +215,6 @@ h1 em { font-style: normal; color: var(--hero-em); }
 .screen .scr { position: absolute; inset: 0; opacity: 0; }
 .screen .scr img { border-radius: 0; width: 100%; height: 100%; object-fit: cover; }
 .screen .scr1 { opacity: 1; }
-.js .screen .scr { animation: screens 20s ease-in-out infinite both; }
-.js .screen .scr2 { animation-delay: 4s; }
-.js .screen .scr3 { animation-delay: 8s; }
-.js .screen .scr4 { animation-delay: 12s; }
-.js .screen .scr5 { animation-delay: 16s; }
-@keyframes screens { 0% { opacity: 0; } 3%, 20% { opacity: 1; } 23%, 100% { opacity: 0; } }
-.js .screen .scr1 { animation-name: screens-first; }
-@keyframes screens-first { 0%, 20% { opacity: 1; } 23%, 97% { opacity: 0; } 100% { opacity: 1; } }
 .heads-up {
   position: absolute; z-index: 2; left: 3.5cqw; right: 3.5cqw; top: 3.5cqw;
   display: flex; gap: 3.5cqw; align-items: center;
