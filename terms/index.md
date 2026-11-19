@@ -63,7 +63,7 @@ at any time; JAIB then stops reading your email.
 
 ## Plans, payments and ads
 
-- JAIB has a free plan and paid plans (Hisaab and Khazana), sold as monthly subscriptions through Google Play. During
+- JAIB has a free plan and paid plans (Hisaab and Khazana, see [jaib.pk/plans](/plans/)), sold as monthly subscriptions through Google Play. During
   the beta every tester gets the beta plan, and nothing is charged.
 - Google Play takes the payment. Prices are shown in Google Play before you buy. Subscriptions renew each month until
   you cancel; cancel in Google Play > Payments & subscriptions. Cancelling stops the next renewal; the plan stays until
